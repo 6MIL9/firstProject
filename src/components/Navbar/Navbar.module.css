@@ -1,0 +1,42 @@
+.main {
+    grid-area: n;
+    background-color: green;
+    width: 200px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+}
+
+.item {
+    color: #ffffff;
+    font-size: 22px;
+    text-decoration: none;  
+}
+
+.link {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.activeLink {
+    color: hotpink;
+}
+
+.friendsContainer h2 {
+    color: #ffa41c;
+    text-align: center;
+}   
+
+.friendList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 190px;
+}
+

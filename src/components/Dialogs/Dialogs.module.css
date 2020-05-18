@@ -1,0 +1,43 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    font-size: 1.1rem;
+}
+
+.dialogItems {
+    padding: 10px;
+}
+
+.dialogItems .active {
+    color: yellow;
+}
+
+.dialog {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+}
+
+.link {
+    text-decoration: none;
+    color: #000000;
+}
+
+.messages {
+    padding: 10px;
+}
+
+.avatar {
+    background-color: orange;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #000000;
+    margin-bottom: 5px;
+}
+
+.newDialog {
+    padding: 10px;
+}

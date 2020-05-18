@@ -1,0 +1,17 @@
+.avatar {
+    background-color: orange;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #000000;
+    margin-bottom: 5px;
+}
+
+.name {
+    min-width: 50px;
+    color: #ffffff;
+    margin-bottom: 5px;
+
+}

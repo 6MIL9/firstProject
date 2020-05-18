@@ -1,0 +1,22 @@
+body {
+    font-family: 'sen', sans-serif;
+}
+
+.app-wrapper {
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+    "h h"
+    "n c";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 1fr 9fr;
+    grid-gap: 10px;
+    height: 100vh;
+    width: 100%;
+}
+
+.app-wrapper-content {
+    grid-area: c;
+    background-color: cornflowerblue;
+}
+

@@ -1,0 +1,11 @@
+.content {
+    grid-area: c;
+    background-color: cornflowerblue;
+}
+
+.item {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+
