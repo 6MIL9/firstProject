@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { connect } from 'react-redux';
 import { login } from '../../redux/authReducer';
+import { connect } from 'react-redux';
 
 const LoginForm = (props) => {
     return (
