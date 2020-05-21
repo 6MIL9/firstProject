@@ -1,12 +1,13 @@
 import { authAPI } from '../API/Api';
 
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
+const SET_LOGIN = 'SET_LOGIN';
 
 let initialState = {
     userId: null,
     email: null,
     login: null,
-    isAuth: false
+    isLogin: false
 };
 
 const authReducer = (state = initialState, action) => {
@@ -15,7 +16,13 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data,
-                isAuth: true
+            };
+        }
+
+        case SET_LOGIN: {
+            return {
+                ...state,
+                isLogin: true
             };
         }
 
@@ -42,13 +49,20 @@ export const AuthUserData = () => {
     }
 }
 
+export const setLogin = () => {
+    return {
+        type: SET_LOGIN
+    };
+}
+
 export const login = (email, password, rememberMe) => {
     return (dispatch) => {
         authAPI.sentLoginData(email, password, rememberMe).then(response => {
             if (response.data.resultCode === 0) {
-                console.log('success');
+                dispatch(setLogin());
             } else {
                 console.log('error');
+                alert('Вы ввели неверные данные');
             }
         });
     }

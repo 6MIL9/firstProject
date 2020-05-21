@@ -1,9 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
-// import { setLogin, login } from '../../redux/loginReducer';
 import { login } from '../../redux/authReducer';
-import { loginAPI } from '../../API/Api';
 
 const LoginForm = (props) => {
     return (
@@ -25,8 +23,6 @@ const LoginForm = (props) => {
                     <button>Login</button>
                 </div>
             </form>
-
-            <button onClick={loginAPI.sentLoginData}>test</button>
         </div >
     );
 }
@@ -46,13 +42,13 @@ const Login = (props) => {
 
     return <>
         <h1>Login</h1>
-        <LoginReduxForm onSubmit={onSubmit} />
+        {props.isLogin ? <h2>You are logged in to your profile</h2> : <LoginReduxForm onSubmit={onSubmit} />}
     </>
 }
 
 const mapStateToProps = (state) => {
     return {
-
+        isLogin: state.auth.isLogin
     }
 }
 

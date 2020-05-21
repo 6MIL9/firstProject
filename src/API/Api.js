@@ -37,7 +37,7 @@ export const userProfileAPI = {
 export const authAPI = {
     getAuthUserData() {
         return instance.get(`auth/me`)
-            .then(responce => responce.data);
+            .then(response => response.data);
     },
     sentLoginData(email, password, rememberMe) {
         return instance.post('/auth/login', {
