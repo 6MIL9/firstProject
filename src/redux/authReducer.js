@@ -42,4 +42,16 @@ export const AuthUserData = () => {
     }
 }
 
+export const login = (email, password, rememberMe) => {
+    return (dispatch) => {
+        authAPI.sentLoginData(email, password, rememberMe).then(response => {
+            if (response.data.resultCode === 0) {
+                console.log('success');
+            } else {
+                console.log('error');
+            }
+        });
+    }
+}
+
 export default authReducer;
