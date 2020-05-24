@@ -41,21 +41,10 @@ export const authAPI = {
     },
     sentLoginData(email, password, rememberMe) {
         return instance.post('/auth/login', {
-            email: email,
-            password: password,
-            rememberMe: rememberMe
-        }
-        )
+            email: email, password: password, rememberMe: rememberMe
+        });
+    },
+    logout() {
+        return instance.delete('/auth/login');
     }
 };
-
-export const loginAPI = {
-    sentLoginData(email, password, rememberMe) {
-        return instance.post('/auth/login', {
-            email: email,
-            password: password,
-            rememberMe: rememberMe
-        }
-        )
-    }
-}
