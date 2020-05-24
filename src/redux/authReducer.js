@@ -1,4 +1,5 @@
 import { authAPI } from '../API/Api';
+import { stopSubmit } from 'redux-form';    
 
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
 
@@ -47,8 +48,8 @@ export const login = (email, password, rememberMe) => {
             if (response.data.resultCode === 0) {
                 dispatch(AuthUserData());
             } else {
-                console.log('error');
-                alert('Вы ввели неверные данные');
+                let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Email or password is wrong';
+                dispatch(stopSubmit("login", {_error:message}));
             }
         });
     }
@@ -59,7 +60,7 @@ export const logout = () => {
         authAPI.logout().then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(setAuthUserData(null, null, null, false));
-            } 
+            }
         });
     }
 }

@@ -8,22 +8,27 @@ import { Route, BrowserRouter } from "react-router-dom";
 import UsersContainer from './components/Users/UsersContainer';
 import Login from './components/Login/Login'
 
-function App(props) {
-  return (
-    <BrowserRouter>
-      <div className="app-wrapper">
-        <HeaderContainer />
-        <Navbar friendsData={props.store.getState().sidebar.friendsData}/>
-        <div className="app-wrapper-content">
-          <Route render={() => (<ProfileContainer />)} path="/Profile/:userId?" />
-          <Route render={() => (<DialogsContainer />)} path="/Dialogs" />
-          <Route render={() => (<UsersContainer/>)} path="/Users" />
-          <Route render={() => (<Login/>)} path="/Login" />
-          
+class App extends React.Component {
+
+
+
+  render() {
+    return (
+      <BrowserRouter>
+        <div className="app-wrapper">
+          <HeaderContainer />
+          <Navbar friendsData={this.props.store.getState().sidebar.friendsData} />
+          <div className="app-wrapper-content">
+            <Route render={() => (<ProfileContainer />)} path="/Profile/:userId?" />
+            <Route render={() => (<DialogsContainer />)} path="/Dialogs" />
+            <Route render={() => (<UsersContainer />)} path="/Users" />
+            <Route render={() => (<Login />)} path="/Login" />
+
+          </div>
         </div>
-      </div>
-    </BrowserRouter >
-  );
+      </BrowserRouter >
+    );
+  }
 }
 
 export default App;
