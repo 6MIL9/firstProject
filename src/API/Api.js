@@ -11,7 +11,6 @@ const instance = axios.create({
 export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 5) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-            .then(responce => responce.data);
     },
     follow(userId) {
         return instance.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`)
@@ -24,7 +23,6 @@ export const usersAPI = {
 export const userProfileAPI = {
     getUserProfile(userId) {
         return instance.get(`profile/${userId}`)
-            .then(responce => responce.data);
     },
     getStatus(userId) {
         return instance.get(`profile/status/${userId}`)
@@ -36,8 +34,7 @@ export const userProfileAPI = {
 
 export const authAPI = {
     getAuthUserData() {
-        return instance.get(`auth/me`)
-            .then(response => response.data);
+        return instance.get(`auth/me`);
     },
     sentLoginData(email, password, rememberMe) {
         return instance.post('/auth/login', {

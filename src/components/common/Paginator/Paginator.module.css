@@ -1,0 +1,14 @@
+.pages {
+    display: flex;
+    margin: 0 -3px;
+    font-size: 25px;
+}
+
+.selectedPage {
+    font-weight: bold;
+}
+
+#item {
+    flex: 1 1 auto;
+    margin: 0 3px;
+}

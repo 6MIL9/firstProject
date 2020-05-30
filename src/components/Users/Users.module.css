@@ -1,23 +1,8 @@
-.usersphoto {
+.usersPhoto {
     height: 100px;
     width: 100px;
     border-radius: 200px 200px 200px 200px;
     -moz-border-radius: 200px 200px 200px 200px;
     -webkit-border-radius: 200px 200px 200px 200px;
     border: 0px solid #000000;
-}
-
-.pages {
-    display: flex;
-    margin: 0 -3px;
-    font-size: 25px;
-}
-
-.selectedPage {
-    font-weight: bold;
-}
-
-#item {
-    flex: 1 1 auto;
-    margin: 0 3px;
 }
