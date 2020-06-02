@@ -1,14 +1,12 @@
 .pages {
-    display: flex;
-    margin: 0 -3px;
-    font-size: 25px;
+    margin: 10px;
+}
+.pageNumber {
+    padding: 2px;
+    border: 1px solid black;
 }
 
-.selectedPage {
+.pageNumber.selectedPage {
     font-weight: bold;
-}
-
-#item {
-    flex: 1 1 auto;
-    margin: 0 3px;
+    border-color: black;
 }
