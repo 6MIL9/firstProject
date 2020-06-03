@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
-import { Route, BrowserRouter, withRouter } from "react-router-dom";
+import { Route, HashRouter, withRouter } from "react-router-dom";
 import UsersContainer from './components/Users/UsersContainer';
 import Login from './components/Login/Login';
 import { initializeApp } from './redux/appReducer';
@@ -28,20 +28,18 @@ class App extends React.Component {
       return <Preloader />
     } else {
       return (
-        <BrowserRouter>
-          <div className="app-wrapper">
-            <HeaderContainer />
-            <Navbar friendsData={this.props.friendsData} />
-            <div className="app-wrapper-content">
-              <React.Suspense fallback={<div><Preloader /></div>}>
-                <Route render={() => (<DialogsContainer />)} path='/dialogs' />
-                <Route render={() => (<ProfileContainer />)} path='/profile/:userId?' />
-              </React.Suspense>
-              <Route render={() => (<UsersContainer />)} path="/Users" />
-              <Route render={() => (<Login />)} path="/Login" />
-            </div>
+        <div className="app-wrapper">
+          <HeaderContainer />
+          <Navbar friendsData={this.props.friendsData} />
+          <div className="app-wrapper-content">
+            <React.Suspense fallback={<div><Preloader /></div>}>
+              <Route render={() => (<DialogsContainer />)} path='/dialogs' />
+              <Route render={() => (<ProfileContainer />)} path='/profile/:userId?' />
+            </React.Suspense>
+            <Route render={() => (<UsersContainer />)} path="/Users" />
+            <Route render={() => (<Login />)} path="/Login" />
           </div>
-        </BrowserRouter >
+        </div>
       );
     }
   }
@@ -56,11 +54,11 @@ const mapStateToProps = (state) => ({
 let AppContainer = compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
 
 const MainApp = (props) => {
-  return <BrowserRouter>
+  return <HashRouter>
     <Provider store={store}>
       <AppContainer store={store} />
     </Provider>
-  </BrowserRouter>
+  </HashRouter>
 }
 
 export default MainApp;
