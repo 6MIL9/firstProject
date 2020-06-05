@@ -2,7 +2,19 @@
     padding: 30px;
 }
 
-.userPhoto{
+.userPhoto {
     width: 200px;
     height: 200px;
+}
+
+.contact {
+    padding-left: 10px;
+}
+
+.formSummaryError {
+    border: solid red 1px;
+    color: black;
+    font-weight: 700;
+    width: 15%;
+    padding: 5px;
 }
