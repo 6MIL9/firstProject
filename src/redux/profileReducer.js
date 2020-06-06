@@ -58,7 +58,7 @@ const profileReducer = (state = initialState, action) => {
                 profile: { ...state.profile, photos: action.photo }
             }
         }
-     
+
         default:
             return state;
     }
@@ -117,13 +117,18 @@ export const getStatus = (userId) => {
 
 export const updateStatus = (status) => {
     return async (dispatch) => {
-        let response = await userProfileAPI.updateStatus(status)
+        try {
+            let response = await userProfileAPI.updateStatus(status)
 
-        if (response.data.resultCode === 0) {
-            dispatch(setStatus(status));
+            if (response.data.resultCode === 0) {
+                dispatch(setStatus(status));
+            }
+        } catch (error) {
+            console.log(error)
         }
     }
 }
+
 
 export const savePhoto = (photo) => {
     return async (dispatch) => {
@@ -143,7 +148,7 @@ export const saveProfile = (profile) => {
         if (response.data.resultCode === 0) {
             dispatch(getProfile(userId));
         } else {
-            dispatch(stopSubmit('editProfile', {_error: response.data.messages[0]}));
+            dispatch(stopSubmit('editProfile', { _error: response.data.messages[0] }));
             return Promise.reject(response.data.messages[0]);
         }
     }
