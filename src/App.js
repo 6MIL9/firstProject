@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
-import { Route, BrowserRouter, withRouter, Redirect } from "react-router-dom";
+import { Route, BrowserRouter, withRouter, Redirect, Switch } from "react-router-dom";
 import UsersContainer from './components/Users/UsersContainer';
 import Login from './components/Login/Login';
 import { initializeApp } from './redux/appReducer';
@@ -11,6 +11,7 @@ import { compose } from 'redux';
 import Preloader from './components/common/Preloader/Preloader';
 import { Provider } from 'react-redux';
 import store from './redux/reduxStore';
+import {withSuspense} from "./hoc/withSuspense";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 
@@ -19,7 +20,7 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 class App extends React.Component {
 
   catchAllUnhandledErrors = (promiseRejectionEvent) => {
-    alert(promiseRejectionEvent);
+    console.log(promiseRejectionEvent);
   }
 
   componentDidMount() {
@@ -42,16 +43,16 @@ class App extends React.Component {
           <HeaderContainer />
           <Navbar friendsData={this.props.friendsData} />
           <div className="app-wrapper-content">
-            <React.Suspense fallback={<div><Preloader /></div>}>
-              <Route render={() => (<DialogsContainer />)} path='/dialogs' />
-              <Route render={() => (<ProfileContainer />)} path='/profile/:userId?' />
+            <Switch>
+              <Route render={withSuspense(DialogsContainer)} path='/dialogs' />
+              <Route render={withSuspense(ProfileContainer)} path='/profile/:userId?' />
               <Route exact render={() => (<Redirect to={"/Login"} />)} path='/' />
-            </React.Suspense>
-            <Route render={() => (<UsersContainer />)} path="/Users" />
+            <Route render={() => (<UsersContainer /> )} path="/Users" />
             <Route render={() => (<Login />)} path="/Login" />
-            <Route render={() => (<div>404 NOT FOUND</div>)} path="*" />
-          </div>
+            <Route render={() => (<div>404 NOT FOUND</div>)} />
+            </Switch>
         </div>
+        </div >
       );
     }
   }
