@@ -14,7 +14,7 @@ function Profile(props) {
         saveProfile={props.saveProfile} />
       <MyPostsContainer />
     </div>
-  );
+  )
 }
 
 export default Profile;

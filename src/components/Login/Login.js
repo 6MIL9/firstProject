@@ -9,8 +9,8 @@ import classes from "../common/FormsControls/FormsControls.module.css";
 
 const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className={classes.loginWrapper}>
+            <form className={classes.loginForm} onSubmit={handleSubmit}>
 
                 {createField('Email', 'email', [requiredField], Input)}
                 {createField('Password', 'password', [requiredField], Input, { type: "password" })}

@@ -1,8 +1,47 @@
 .description {
-    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 278.01px;
+}
+
+.imgWrapper {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 3%;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    color: #00a3ff;
+    display: block;
+    margin-top: 1rem;
+    text-align: center;
+    border-radius: 3%;
+    background-color: #e4eef1;
+    padding: 0.2rem 0;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    cursor: pointer;
+    color: #47b1c6;
 }
 
 .userPhoto {
+    display: block;
+    border-radius: 3%;
+    border: 0;
     width: 200px;
     height: 200px;
 }
@@ -17,4 +56,33 @@
     font-weight: 700;
     width: 15%;
     padding: 5px;
+}
+
+.profileDataWrapper {
+    background-color: #fff;
+    border-radius: 3%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 278.01px;
+}
+
+.profileDataWrapper h3 {
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+
+.dataWrapper {
+    margin-left: 1rem;
+    width: calc(100% - 231.99px);
+    height: 278.01px;
+}
+
+.dataTop {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #888;
+}
+
+.dataBottom {
+    padding-top: 1rem;
 }

@@ -11,7 +11,8 @@ import { compose } from 'redux';
 import Preloader from './components/common/Preloader/Preloader';
 import { Provider } from 'react-redux';
 import store from './redux/reduxStore';
-import {withSuspense} from "./hoc/withSuspense";
+import { withSuspense } from "./hoc/withSuspense";
+import Settings from './components/Settings/Settings';
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 
@@ -30,7 +31,6 @@ class App extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
-
   }
 
   render() {
@@ -39,30 +39,32 @@ class App extends React.Component {
       return <Preloader />
     } else {
       return (
-        <div className="app-wrapper">
+        <div>
           <HeaderContainer />
-          <Navbar friendsData={this.props.friendsData} />
-          <div className="app-wrapper-content">
-            <Switch>
-              <Route render={withSuspense(DialogsContainer)} path='/dialogs' />
-              <Route render={withSuspense(ProfileContainer)} path='/profile/:userId?' />
-              <Route exact render={() => (<Redirect to={"/Login"} />)} path='/' />
-            <Route render={() => (<UsersContainer /> )} path="/Users" />
-            <Route render={() => (<Login />)} path="/Login" />
-            <Route render={() => (<div>404 NOT FOUND</div>)} />
-            </Switch>
-        </div>
+          <div className="clone"></div>
+          <div className="app-wrapper">
+            <Navbar />
+            <div className="app-wrapper-content">
+              <Switch>
+                <Route render={withSuspense(DialogsContainer)} path='/dialogs' />
+                <Route render={withSuspense(ProfileContainer)} path='/profile/:userId?' />
+                <Route exact render={() => (<Redirect to={"/Login"} />)} path='/' />
+                <Route render={() => (<UsersContainer />)} path="/Users" />
+                <Route render={() => (<Login />)} path="/Login" />
+                <Route render={() => (<Settings />)} path="/Settings" />
+                <Route render={() => (<div>404 NOT FOUND</div>)} />
+              </Switch>
+            </div>
+          </div >
+
         </div >
       );
     }
   }
 }
 const mapStateToProps = (state) => ({
-  friendsData: state.sidebar.friendsData,
   initialized: state.app.initialized
 })
-
-
 
 let AppContainer = compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
 

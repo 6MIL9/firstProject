@@ -1,42 +1,34 @@
 .main {
     grid-area: n;
-    background-color: green;
+    background-color: #EDEEF0;
     width: 200px;
 }
 
 .nav {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    text-align: center;
-    padding: 25px;
+    text-align: left;
+    padding: 1rem;
 }
 
 .item {
-    color: #ffffff;
     font-size: 22px;
     text-decoration: none;  
 }
 
 .link {
     text-decoration: none;
-    color: #ffffff;
+    color: #00A3FF;
+    display: flex;
+    cursor: pointer;
+    padding-left: 1rem;
 }
+
+.link:hover {
+    background-color: #DCE3F0;
+}
+
 
 .activeLink {
-    color: hotpink;
+    color: rgb(58, 56, 56);
 }
-
-.friendsContainer h2 {
-    color: #ffa41c;
-    text-align: center;
-}   
-
-.friendList {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 190px;
-}
-

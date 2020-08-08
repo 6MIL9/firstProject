@@ -30,39 +30,76 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
 
   return (
     <div className={classes.description}>
-      <img src={profile.photos.large || defaultPhoto} alt='фото отсутсвует' className={classes.userPhoto} />
-      {isOwner && <input type='file' onChange={onPhotoSelected} />}
-
-      {editMode
-        ? <ProfileDataForm profile={profile} initialValues={profile} onSubmit={onSubmit} />
-        : <ProfileData profile={profile} isOwner={isOwner} activateEditMode={() => setEditMode(true)} />}
-
-      <ProfileStatusWithHook status={status} updateStatus={updateStatus} />
+      <div className={classes.imgWrapper}>
+        <img src={profile.photos.large || defaultPhoto} alt='фото отсутсвует' className={classes.userPhoto} />
+        {isOwner &&
+          <>
+            <input type="file" name="file" id="file" className={classes.inputfile} onChange={onPhotoSelected} />
+            <label htmlFor="file">
+              <p>Edit</p>
+            </label>
+          </>
+        }
+      </div>
+      <div className={classes.dataWrapper}>
+        {editMode
+          ? <ProfileDataForm profile={profile} initialValues={profile} onSubmit={onSubmit} />
+          : <ProfileData profile={profile} isOwner={isOwner} activateEditMode={() => setEditMode(true)} status={status} updateStatus={updateStatus} />
+        }
+      </div>
     </div>
   );
 }
 
-const ProfileData = ({ profile, isOwner, activateEditMode }) => {
-  return <div>
+const ProfileData = ({ profile, isOwner, activateEditMode, status, updateStatus }) => {
+
+  let [showInfo, setShowInfo] = useState(false);
+
+  const showMoreInfo = () => {
+    setShowInfo(true);
+  }
+
+  const hideInfo = () => {
+    setShowInfo(false);
+  }
+  return <div className={classes.profileDataWrapper}>
+    <div className={classes.dataTop}>
+      <h3>
+        {profile.fullName}
+      </h3>
+      <div>
+        <ProfileStatusWithHook status={status} updateStatus={updateStatus} />
+      </div>
+    </div>
+
+    <div className={classes.dataBottom}>
+      <div>
+        Looking for a job: {profile.lookingForAJob ? 'yes' : 'no'}
+      </div>
+      {profile.lookingForAJob && <div>
+        My skills: {profile.lookingForAJobDescription}
+      </div>}
+      <div>
+        {!showInfo &&
+          <button onClick={showMoreInfo}>Show more</button>
+        }
+
+        {showInfo &&
+          <div>
+            <button onClick={hideInfo}>Hide </button>
+            <div>
+              Contacts: {Object.keys(profile.contacts).map(key => {
+              return <Contact contactTitle={key} contactValue={profile.contacts[key]} key={key} />
+            })}
+            </div>
+          </div>
+        }
+
+      </div>
+
+    </div>
     <div>
       {isOwner && <button onClick={activateEditMode}>Edit</button>}
-    </div>
-    <div>
-      Full name: {profile.fullName}
-    </div>
-    <div>
-      About me: {profile.aboutMe}
-    </div>
-    <div>
-      Looking for a job: {profile.lookingForAJob ? 'yes' : 'no'}
-    </div>
-    {profile.lookingForAJob && <div>
-      My skills: {profile.lookingForAJobDescription}
-    </div>}
-    <div>
-      Contacts: {Object.keys(profile.contacts).map(key => {
-      return <Contact contactTitle={key} contactValue={profile.contacts[key]} key={key} />
-    })}
     </div>
   </div>
 }

@@ -1,4 +1,12 @@
-.formControl.error input, .formControl.error textarea {
+.form {
+    outline: none;
+    border: 1px solid #888;
+    background-color: #fff;
+    height: 1.2rem;
+}
+
+.formControl.error input,
+.formControl.error textarea {
     border: solid red 2px;
 }
 
@@ -12,4 +20,16 @@
     font-weight: 700;
     width: 15%;
     padding: 5px;
+}
+
+/* .loginWrapper{
+    position: relative;
+    top: 30%;
+    left: 40%;
+} */
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

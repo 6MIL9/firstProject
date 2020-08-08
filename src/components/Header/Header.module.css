@@ -1,6 +1,8 @@
 .header {
-    grid-area: h;
-    background-color: blanchedalmond;
+    background-color: #00A3FF;
+    position: fixed;
+    width: 100%;
+    height: 45px;
 }
 
 .header img {

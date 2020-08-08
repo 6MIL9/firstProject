@@ -1,0 +1,5 @@
+.wrapper:focus {
+    border: 1px solid #00a3ff;
+    outline: none;
+    height: 100%;
+}

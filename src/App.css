@@ -5,18 +5,26 @@ body {
 .app-wrapper {
     margin: 0 auto;
     display: grid;
-    grid-template-areas:
-    "h h"
-    "n c";
-    grid-template-rows: 60px 1fr;
+    grid-template-areas:"n c";
     grid-template-columns: 1fr 9fr;
-    grid-gap: 10px;
     height: 100vh;
     width: 100%;
+    max-width: 1000px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 30% 70%;
+    }
 }
 
 .app-wrapper-content {
     grid-area: c;
-    background-color: cornflowerblue;
+    background-color: #EDEEF0;
+    padding-top: 1rem;
 }
 
+.clone {
+    width: 100%;
+    height: 45px;
+    position: static;
+    visibility: hidden;
+}
