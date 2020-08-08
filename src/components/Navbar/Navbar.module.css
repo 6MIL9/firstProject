@@ -1,14 +1,14 @@
 .main {
     grid-area: n;
     background-color: #EDEEF0;
-    width: 200px;
+    min-width: 160px;
 }
 
 .nav {
     display: flex;
     flex-direction: column;
     text-align: left;
-    padding: 1rem;
+    padding: 1rem  1rem 1rem 0;
 }
 
 .item {

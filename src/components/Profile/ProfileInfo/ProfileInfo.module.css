@@ -46,8 +46,12 @@
     height: 200px;
 }
 
-.contact {
-    padding-left: 10px;
+.contactsWrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%;
+    cursor: pointer;
 }
 
 .formSummaryError {
@@ -84,5 +88,51 @@
 }
 
 .dataBottom {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
     padding-top: 1rem;
+    width: 100%;
+}
+
+.mainInfoWrapper {
+    width: 40%;
+    padding-top: 1rem;
+    line-height: 1.6;
+}
+
+.moreInfoWrapper {
+    width: 55%;
+}
+
+.moreInfoWrapper button {
+    margin-top: 1.7rem;
+    margin-left: 2rem;
+}
+
+.editBtnWrapper {
+    padding-top: 58px;
+}
+
+.hideInfoWrapper {
+    font-size: 0.8rem;
+}
+
+.btn {
+    color: #fff;
+    background-color: #00a3ff;
+    border: 0;
+    padding: 0.2rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:focus {
+    border: 0;
+    outline: none;
+}
+
+.btn:hover {
+    background-color: #2cb2ff;
 }

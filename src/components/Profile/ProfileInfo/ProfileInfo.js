@@ -73,33 +73,33 @@ const ProfileData = ({ profile, isOwner, activateEditMode, status, updateStatus 
     </div>
 
     <div className={classes.dataBottom}>
-      <div>
-        Looking for a job: {profile.lookingForAJob ? 'yes' : 'no'}
+      <div className={classes.mainInfoWrapper}>
+        <div>
+          Looking for a job: {profile.lookingForAJob ? 'yes' : 'no'}
+        </div>
+        {profile.lookingForAJob && <div>
+          My skills: {profile.lookingForAJobDescription}
+        </div>}
+        <div className={classes.editBtnWrapper}>
+          {isOwner && <button onClick={activateEditMode} className={classes.btn}>Edit</button>}
+        </div>
       </div>
-      {profile.lookingForAJob && <div>
-        My skills: {profile.lookingForAJobDescription}
-      </div>}
-      <div>
+
+      <div className={classes.moreInfoWrapper}>
         {!showInfo &&
-          <button onClick={showMoreInfo}>Show more</button>
+          <button onClick={showMoreInfo} className={classes.btn}>Show contacts</button>
         }
 
         {showInfo &&
-          <div>
-            <button onClick={hideInfo}>Hide </button>
-            <div>
-              Contacts: {Object.keys(profile.contacts).map(key => {
-              return <Contact contactTitle={key} contactValue={profile.contacts[key]} key={key} />
-            })}
+          <div className={classes.hideInfoWrapper}>
+            <div className={classes.contactsWrapper} onClick={hideInfo}>
+              {Object.keys(profile.contacts).map(key => {
+                return <Contact contactTitle={key} contactValue={profile.contacts[key]} key={key} />
+              })}
             </div>
           </div>
         }
-
       </div>
-
-    </div>
-    <div>
-      {isOwner && <button onClick={activateEditMode}>Edit</button>}
     </div>
   </div>
 }
