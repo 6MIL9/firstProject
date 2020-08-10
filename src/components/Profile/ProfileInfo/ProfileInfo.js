@@ -24,10 +24,6 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
     console.log(formData)
   }
 
-  if (!profile) {
-    return <Preloader />
-  }
-
   return (
     <div className={classes.description}>
       <div className={classes.imgWrapper}>

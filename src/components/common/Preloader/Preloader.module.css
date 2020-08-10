@@ -1,8 +1,9 @@
 .wrapper {
-    width: 60px;
-    height: 60px;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 100px;
     position: relative;
     left: 50%;
-    transform: translate(-50%, 100%);
+    transform: translate(-50%, 0);
 }
-

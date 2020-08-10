@@ -3,9 +3,9 @@ import { addPostCreator } from '../../../redux/profileReducer';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
- return {
-  postsData: state.profilePage.postsData
- }
+  return {
+    postsData: state.profilePage.postsData
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

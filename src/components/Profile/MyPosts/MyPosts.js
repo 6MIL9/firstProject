@@ -5,11 +5,11 @@ import { reduxForm, Field } from 'redux-form';
 import { requiredField, maxLengthCreator } from '../../../utils/validators/validators';
 import { TextArea } from '../../common/FormsControls/FormsControls';
 
-const maxLength10 = maxLengthCreator(10);
+const maxLength100 = maxLengthCreator(100);
 
 function MyPosts(props) {
 
-  let postsElem = props.postsData.map((post) => <Post msg={post.post} key={post.id} likesCnt={post.likesCnt} />);
+  let postsElem = props.postsData.map((post) => <Post msg={post.post} key={post.id} img={props.img}/>);
 
   let onAddPost = (formData) => {
     props.addPost(formData.newPostText)
@@ -17,10 +17,12 @@ function MyPosts(props) {
 
   return (
     <div className={classes.postsBlock}>
-      <h3>My posts</h3>
-      <AddNewFormRedux onSubmit={onAddPost} />
-      <div className={classes.posts}>
-        {postsElem}
+      <h3 className={classes.title}>My posts</h3>
+      <div className={classes.postsWrapper}>
+        <AddNewFormRedux onSubmit={onAddPost}/>
+        <div className={classes.posts}>
+          {postsElem}
+        </div>
       </div>
     </div >
 
@@ -31,10 +33,10 @@ const AddNewForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <Field component={TextArea} name='newPostText' placeholder='Enter your post' validate={[requiredField, maxLength10]}></Field>
+        <Field component={TextArea} className={classes.textArea} name='newPostText' placeholder='Enter your post' validate={[requiredField, maxLength100]}></Field>
       </div>
-      <div>
-        <button>Add post</button>
+      <div className={classes.btnWrapper}>
+        <button className={classes.btn}>Add post</button>
       </div>
     </form>
   );

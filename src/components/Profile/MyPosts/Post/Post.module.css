@@ -1,6 +1,17 @@
 .item {
-    font-size: 17px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.1rem;
     font-weight: 500;
+    margin: 1rem 0;
+}
+
+.bar {
+    width: 1px;
+    border-right: solid 1px #000;
+    margin: 0 1rem;
+    align-self: normal;
 }
 
 .item img {
@@ -10,4 +21,10 @@
     -moz-border-radius: 200px 200px 200px 200px;
     -webkit-border-radius: 200px 200px 200px 200px;
     border: 0px solid #000000;
+}
+
+.msgWrapper {
+}
+
+.msg {
 }
