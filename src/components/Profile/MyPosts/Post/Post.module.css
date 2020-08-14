@@ -23,8 +23,6 @@
     border: 0px solid #000000;
 }
 
-.msgWrapper {
-}
-
 .msg {
+    padding-right: 1rem;
 }

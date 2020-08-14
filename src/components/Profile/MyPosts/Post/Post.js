@@ -6,9 +6,7 @@ function Post(props) {
     <div className={classes.item}>
       <img src={props.img}></img>
       <div className={classes.bar}></div>
-      <div className={classes.msgWrapper}>
-        <div className={classes.msg}>{props.msg}</div>
-      </div>
+      <p className={classes.msg}>{props.msg}</p>
     </div>
   );
 }

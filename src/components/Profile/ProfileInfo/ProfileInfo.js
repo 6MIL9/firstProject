@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import classes from './ProfileInfo.module.css';
-import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatusWithHook from './ProfileStatusWithHook';
 import defaultPhoto from '../../../assets/img/noAvatar.jpg';
-import ProfileDataForm from './ProfileDataForm';
+import { NavLink } from 'react-router-dom';
 
 const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, saveProfile }) => {
-
-  let [editMode, setEditMode] = useState(false);
 
   const onPhotoSelected = (e) => {
     if (e.target.files.length) {
@@ -15,14 +12,10 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
     }
   }
 
-  const onSubmit = (formData) => {
-    saveProfile(formData).then(
-      () => {
-        setEditMode(false);
-      }
-    )
-    console.log(formData)
-  }
+  // const onSubmit = (formData) => {
+  //   saveProfile(formData);
+  //   console.log(formData)
+  // }
 
   return (
     <div className={classes.description}>
@@ -38,16 +31,14 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
         }
       </div>
       <div className={classes.dataWrapper}>
-        {editMode
-          ? <ProfileDataForm profile={profile} initialValues={profile} onSubmit={onSubmit} />
-          : <ProfileData profile={profile} isOwner={isOwner} activateEditMode={() => setEditMode(true)} status={status} updateStatus={updateStatus} />
-        }
+        {/* <ProfileDataForm profile={profile} initialValues={profile} onSubmit={onSubmit} /> */}
+        <ProfileData profile={profile} isOwner={isOwner} status={status} updateStatus={updateStatus} />
       </div>
     </div>
   );
 }
 
-const ProfileData = ({ profile, isOwner, activateEditMode, status, updateStatus }) => {
+const ProfileData = ({ profile, isOwner, status, updateStatus }) => {
 
   let [showInfo, setShowInfo] = useState(false);
 
@@ -77,7 +68,8 @@ const ProfileData = ({ profile, isOwner, activateEditMode, status, updateStatus 
           My skills: {profile.lookingForAJobDescription}
         </div>}
         <div className={classes.editBtnWrapper}>
-          {isOwner && <button onClick={activateEditMode} className={classes.btn}>Edit</button>}
+          {/* {isOwner && <button onClick={activateEditMode} className={classes.btn}>Edit</button>} */}
+          {isOwner && <NavLink to="/settings" className={classes.btn}>Edit</NavLink>}
         </div>
       </div>
 

@@ -128,6 +128,7 @@
     cursor: pointer;
     font-size: 1rem;
     outline: none;
+    text-decoration: none;
 }
 
 .btn:focus {
@@ -137,4 +138,10 @@
 
 .btn:hover {
     background-color: #2cb2ff;
+}
+
+.formWrapper {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
 }

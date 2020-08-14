@@ -22,14 +22,16 @@
     padding: 5px;
 }
 
-/* .loginWrapper{
-    position: relative;
-    top: 30%;
-    left: 40%;
-} */
-
 .loginForm {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.textArea {
+    outline: none;
+    resize: none;
+    width: 30%;
+    height: 60px;
+    overflow: hidden;
 }
