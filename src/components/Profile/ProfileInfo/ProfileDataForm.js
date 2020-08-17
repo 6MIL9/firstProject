@@ -10,13 +10,7 @@ const ProfileDataForm = ({ handleSubmit, profile, error }) => {
                 {error}
             </div>}
             <div>
-                <button className={classes.btn}>Save</button>
-            </div>
-            <div>
                 Full name: {createField("Full name", "fullName", [], Input)}
-            </div>
-            <div>
-                About me: {createField("About you", "aboutMe", [], TextArea)}
             </div>
             <div>
                 Looking for a job: {createField("", "lookingForAJob", [], Input, { type: "checkbox" })}
@@ -30,6 +24,9 @@ const ProfileDataForm = ({ handleSubmit, profile, error }) => {
                     {key}: {createField(key, "contacts." + key, [], Input)}
                 </div>
             })}
+            </div>
+            <div className={classes.btnWrapper}>
+                <button className={classes.btn}>Save</button>
             </div>
         </form>
     );

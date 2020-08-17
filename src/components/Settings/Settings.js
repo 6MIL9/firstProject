@@ -6,16 +6,18 @@ import Preloader from './../common/Preloader/Preloader';
 const Settings = ({ profile, saveProfile }) => {
 
     const onSubmit = (formData) => {
-        saveProfile(formData);
+        saveProfile(formData).then(
+            alert('vse')
+        )
         console.log(formData)
     }
 
     if (!profile) {
-        return <Preloader/>
+        return <Preloader />
     }
 
     return (
-        <div>
+        <div className={classes.wrapper}>
             <ProfileDataForm profile={profile} initialValues={profile} onSubmit={onSubmit} />
         </div>
     )

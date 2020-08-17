@@ -120,6 +120,12 @@
     font-size: 0.8rem;
 }
 
+.btnWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
 .btn {
     color: #fff;
     background-color: #00a3ff;
@@ -144,4 +150,6 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
+    border-radius: 3%;
+    padding: 1rem 1rem;
 }
