@@ -12,11 +12,6 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
     }
   }
 
-  // const onSubmit = (formData) => {
-  //   saveProfile(formData);
-  //   console.log(formData)
-  // }
-
   return (
     <div className={classes.description}>
       <div className={classes.imgWrapper}>
@@ -31,7 +26,6 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
         }
       </div>
       <div className={classes.dataWrapper}>
-        {/* <ProfileDataForm profile={profile} initialValues={profile} onSubmit={onSubmit} /> */}
         <ProfileData profile={profile} isOwner={isOwner} status={status} updateStatus={updateStatus} />
       </div>
     </div>
@@ -55,7 +49,7 @@ const ProfileData = ({ profile, isOwner, status, updateStatus }) => {
         {profile.fullName}
       </h3>
       <div>
-        <ProfileStatusWithHook status={status} updateStatus={updateStatus} />
+        <ProfileStatusWithHook status={status} updateStatus={updateStatus} isOwner={isOwner}/>
       </div>
     </div>
 
@@ -68,7 +62,6 @@ const ProfileData = ({ profile, isOwner, status, updateStatus }) => {
           My skills: {profile.lookingForAJobDescription}
         </div>}
         <div className={classes.editBtnWrapper}>
-          {/* {isOwner && <button onClick={activateEditMode} className={classes.btn}>Edit</button>} */}
           {isOwner && <NavLink to="/settings" className={classes.btn}>Edit</NavLink>}
         </div>
       </div>

@@ -2,6 +2,8 @@
     display: grid;
     grid-template-columns: 2fr 10fr;
     font-size: 1.1rem;
+    background-color: #fff;
+    border-radius: 3%;
 }
 
 .dialogItems {

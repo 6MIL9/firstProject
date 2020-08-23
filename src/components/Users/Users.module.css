@@ -1,8 +1,44 @@
+.userWrapper {
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 3%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 152px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
 .usersPhoto {
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 120px;
     border-radius: 200px 200px 200px 200px;
     -moz-border-radius: 200px 200px 200px 200px;
     -webkit-border-radius: 200px 200px 200px 200px;
     border: 0px solid #000000;
+}
+
+.userInfo {
+    margin-top: 0.5rem;
+}
+
+.btn {
+    color: #fff;
+    background-color: #00a3ff;
+    border: 0;
+    padding: 0.2rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    outline: none;
 }

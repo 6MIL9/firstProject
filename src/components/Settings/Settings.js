@@ -6,10 +6,7 @@ import Preloader from './../common/Preloader/Preloader';
 const Settings = ({ profile, saveProfile }) => {
 
     const onSubmit = (formData) => {
-        saveProfile(formData).then(
-            alert('vse')
-        )
-        console.log(formData)
+        saveProfile(formData)
     }
 
     if (!profile) {

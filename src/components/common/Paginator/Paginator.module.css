@@ -1,12 +1,35 @@
 .pages {
     margin: 10px;
+    width: 100%;
 }
 .pageNumber {
     padding: 2px;
-    border: 1px solid gray;
+    cursor: pointer;
+    font-size: 1.05rem;
 }
 
 .pageNumber.selectedPage {
     font-weight: bold;
     border-color: black;
+}
+
+.btn {
+    color: #fff;
+    background-color: #00a3ff;
+    border: 0;
+    padding: 0.2rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    outline: none;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+.btn:focus {
+    border: 0;
+    outline: none;
+}
+
+.btn:hover {
+    background-color: #2cb2ff;
 }
