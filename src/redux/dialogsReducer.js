@@ -2,20 +2,13 @@ const ADD_MESSAGE = 'dialogs/ADD-MESSAGE';
 
 let initialState = {
     dialogsData: [
-        { id: 1, name: 'Dima' },
-        { id: 2, name: 'Andrey' },
-        { id: 3, name: 'Sveta' },
-        { id: 4, name: 'Sasha' },
-        { id: 5, name: 'Victor' },
-        { id: 6, name: 'Valera' }
-    ],
-    messagesData: [
-        { id: 1, message: 'Hi, how are you?' },
-        { id: 2, message: 'I love ds3!' },
-        { id: 3, message: 'Smoug' },
-        { id: 4, message: 'Smoug' },
-        { id: 5, message: 'Smoug' },
-    ],
+        { id: 1, name: 'Dima', message: 'new idea' },
+        { id: 2, name: 'Andrey', message: 'akiha' },
+        { id: 3, name: 'Sveta', message: 'low fi' },
+        { id: 4, name: 'Sasha', message: 'dnd' },
+        { id: 5, name: 'Victor', message: 'new new sas new daravas kvass' },
+        { id: 6, name: 'Valera', message: 'new lorem fdasf rf fsd' }
+    ]
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -30,7 +23,7 @@ const dialogsReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                messagesData: [...state.messagesData, newMessage],
+                dialogsData: [...state.dialogsData, newMessage],
             };
 
         default:

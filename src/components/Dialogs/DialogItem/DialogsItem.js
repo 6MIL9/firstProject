@@ -1,15 +1,16 @@
 import React from 'react';
 import classes from './../Dialogs.module.css';
-import { NavLink } from 'react-router-dom';
+import defaultPhoto from '../../../assets/img/noAvatar.jpg';
 
 const DialogItem = (props) => {
 
-  let path = "/dialogs/" + props.id;
-
   return (
     <div className={classes.dialog + ' ' + classes.active}>
-      <div className={classes.avatar}></div>
-      <NavLink to={path} className={classes.link}>{props.name}</NavLink>
+      <img src={defaultPhoto} alt='фото отсутсвует' className={classes.avatar} />
+
+      <div className={classes.name}>{props.name}</div>
+
+      <div className={classes.message}>{props.message}</div>
     </div>
   );
 }

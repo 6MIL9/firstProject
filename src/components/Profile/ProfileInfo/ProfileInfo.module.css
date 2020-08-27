@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    border-radius: 3%;
+    border-radius: 10px;
 }
 
 .inputfile {
@@ -28,7 +28,7 @@
     display: block;
     margin-top: 1rem;
     text-align: center;
-    border-radius: 3%;
+    border-radius: 10px;
     background-color: #e4eef1;
     padding: 0.2rem 0;
 }
@@ -41,7 +41,7 @@
 
 .userPhoto {
     display: block;
-    border-radius: 3%;
+    border-radius: 10px;
     border: 0;
     width: 200px;
     height: 200px;
@@ -65,7 +65,7 @@
 
 .profileDataWrapper {
     background-color: #fff;
-    border-radius: 3%;
+    border-radius: 10px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -150,6 +150,6 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    border-radius: 3%;
+    border-radius: 10px;
     padding: 1rem 1rem;
 }
