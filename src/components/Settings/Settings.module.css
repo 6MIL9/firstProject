@@ -1,4 +1,7 @@
 .wrapper {
     display: flex;
     justify-content: left;
+    /* position: relative;
+    left: 50%;
+    transform: translate(-50%, 100%); */
 }

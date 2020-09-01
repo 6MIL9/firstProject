@@ -7,16 +7,21 @@ import { requiredField } from '../../utils/validators/validators';
 import { Redirect } from 'react-router-dom';
 import classes from "../common/FormsControls/FormsControls.module.css";
 
+const style = {
+    display: 'inline-block'
+}
+
 const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
     return (
         <div className={classes.loginWrapper}>
+            <h1>Login</h1>
             <form className={classes.loginForm} onSubmit={handleSubmit}>
 
                 {createField('Email', 'email', [requiredField], Input)}
                 {createField('Password', 'password', [requiredField], Input, { type: "password" })}
-                {createField(null, 'rememberMe', [], Input, { type: "checkbox" }, 'remember me')}
+                {createField(null, 'rememberMe', [], Input, { type: "checkbox" }, style)}
 
-                {captchaUrl && <img src={captchaUrl}/>}
+                {captchaUrl && <img src={captchaUrl} />}
                 {captchaUrl && createField('Symbols from image', 'captcha', [requiredField], Input)}
 
                 {(error) && <div className={classes.formSummaryError}>
@@ -24,7 +29,7 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
                 </div>}
 
                 <div>
-                    <button>Login</button>
+                    <button className={classes.btn}>Login</button>
                 </div>
             </form>
         </div >
@@ -44,8 +49,7 @@ const Login = (props) => {
     }
 
     return <>
-        <h1>Login</h1>
-        <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
+        <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
     </>
 }
 

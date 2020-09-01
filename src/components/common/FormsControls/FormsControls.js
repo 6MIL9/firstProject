@@ -6,7 +6,7 @@ const FormControl = ({ input, meta: { touched, error }, element, children }) => 
     let hasError = touched && error;
 
     return (
-        <div classesName={classes.formControl + " " + (hasError ? classes.error : '')}>
+        <div className={classes.formControl + " " + (hasError ? classes.error : '')}>
             <div>
                 {children}
             </div>
@@ -21,7 +21,7 @@ export const TextArea = (props) => {
 
 
     return (
-        <FormControl {...props}><textarea {...input} {...restProps} className={classes.textArea}/></FormControl>
+        <FormControl {...props}><textarea {...input} {...restProps} className={classes.textArea} /></FormControl>
     );
 }
 
@@ -35,10 +35,10 @@ export const Input = (props) => {
     );
 }
 
-export const createField = (placeholder, name, validators, component, props = {}, text = '') => {
+export const createField = (placeholder, name, validators, component, props = {}, style) => {
     return (
         <div>
-            <Field className={classes.form} placeholder={placeholder} name={name} component={component} validate={validators} {...props} /> {text}
+            <Field className={classes.form} placeholder={placeholder} name={name} component={component} validate={validators} style={style} {...props} />
         </div>
     );
 }

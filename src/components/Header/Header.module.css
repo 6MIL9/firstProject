@@ -17,6 +17,31 @@
 }
 
 .loginContainer a {
-    color: black;
+    display: block;
+    color: #00a3ff;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 400;
     text-decoration: none;
+    padding: 1px 6px;
+    margin: 3px;
+    border-radius: 5px;
+}
+
+.userName {
+    color: #111;
+}
+
+.btn {
+    color: #00a3ff;
+    background-color: #FFFFFF;
+    border: 0;
+    margin: 3px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 400;
+    outline: none;
+    text-decoration: none;
+    border-radius: 5px;
 }

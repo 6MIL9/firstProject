@@ -1,7 +1,7 @@
 {
   "name": "my-app",
-  "homepage": "https://6mil9.github.io/firstProject",
   "version": "0.1.0",
+  "homepage": "https://emilkliavlin.mkiselyov.ru/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
