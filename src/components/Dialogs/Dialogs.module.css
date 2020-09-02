@@ -35,3 +35,14 @@
 .newDialog {
     padding: 10px;
 }
+
+.btn {
+    color: #fff;
+    background-color: #00a3ff;
+    border: 0;
+    padding: 0.2rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    outline: none;
+    text-decoration: none;
+}

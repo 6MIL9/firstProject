@@ -1,7 +1,12 @@
 .wrapper {
     display: flex;
     justify-content: left;
-    /* position: relative;
-    left: 50%;
-    transform: translate(-50%, 100%); */
+    margin-left: 40%;
+}
+
+@media (max-width: 1024px) {
+    .wrapper {
+        justify-content: center;
+        margin: 0;
+    }
 }

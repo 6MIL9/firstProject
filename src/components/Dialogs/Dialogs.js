@@ -13,7 +13,7 @@ const AddDialogsForm = (props) => {
       <div>
         <Field component={TextArea} name='newMessageText' placeholder='Enter your message' validate={[requiredField, maxLength]}></Field>
       </div>
-      <div><button>Send</button></div>
+      <div><button className={classes.btn}>Send</button></div>
     </form>
   );
 }

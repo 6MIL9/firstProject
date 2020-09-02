@@ -1,24 +1,20 @@
 body {
-    font-family: 'sen', sans-serif;
+    font-family: "sen", sans-serif;
 }
 
 .app-wrapper {
     margin: 0 auto;
     display: grid;
-    grid-template-areas:"n c";
+    grid-template-areas: "n c";
     grid-template-columns: 2fr 9fr;
     height: 100vh;
     width: 100%;
     max-width: 850px;
-
-    @media (max-width: 768px) {
-        grid-template-columns: 30% 70%;
-    }
 }
 
 .app-wrapper-content {
     grid-area: c;
-    background-color: #EDEEF0;
+    background-color: #edeef0;
     padding-top: 1rem;
 }
 
@@ -27,4 +23,12 @@ body {
     height: 45px;
     position: static;
     visibility: hidden;
+}
+
+@media (max-width: 1024px) {
+    .app-wrapper {
+        grid-template-columns: 100%;
+        grid-template-areas: "c";
+        padding: 0 1rem;
+    }
 }

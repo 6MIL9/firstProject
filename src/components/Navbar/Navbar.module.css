@@ -32,3 +32,10 @@
 .activeLink {
     color: rgb(58, 56, 56);
 }
+
+@media (max-width: 1024px) {
+    .main {
+        display: none;
+    }
+}
+

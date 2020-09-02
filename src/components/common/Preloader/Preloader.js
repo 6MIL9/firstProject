@@ -1,6 +1,5 @@
 import React from 'react';
 import Class from './Preloader.module.css';
-import preloader from '../../../assets/img/preloader.gif';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 

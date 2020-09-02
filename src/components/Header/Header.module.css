@@ -1,6 +1,8 @@
 .header {
-    background-color: #00A3FF;
+    background-color: #00a3ff;
     position: fixed;
+    display: flex;
+    justify-content: flex-end;
     width: 100%;
     height: 45px;
 }
@@ -11,7 +13,6 @@
 }
 
 .loginContainer {
-    float: right;
     font-size: 22px;
     font-weight: 600;
 }
@@ -19,7 +20,7 @@
 .loginContainer a {
     display: block;
     color: #00a3ff;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     cursor: pointer;
     font-size: 1.5rem;
     font-weight: 400;
@@ -35,7 +36,7 @@
 
 .btn {
     color: #00a3ff;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border: 0;
     margin: 3px;
     cursor: pointer;
@@ -44,4 +45,18 @@
     outline: none;
     text-decoration: none;
     border-radius: 5px;
+}
+
+.block {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .block {
+        display: block;
+    }
+
+    .header {
+        justify-content: space-between;
+    }
 }
