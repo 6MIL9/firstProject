@@ -1,0 +1,23 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 0 1rem;
+}
+
+.item {
+    font-size: 22px;
+    text-decoration: none;  
+}
+
+.link {
+    text-decoration: none;
+    color: #FFF;
+    display: flex;
+    cursor: pointer;
+    padding-left: 1rem;
+}
+
+.activeLink {
+    color: navajowhite;
+}

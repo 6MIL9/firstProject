@@ -5,4 +5,5 @@
     height: 50px;
     margin-left: 50%;
     transform: translate(-50%, 500%);
+    z-index: 200;
 }

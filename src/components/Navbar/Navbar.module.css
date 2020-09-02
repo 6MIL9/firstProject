@@ -4,6 +4,10 @@
     min-width: 160px;
 }
 
+.mainSide {
+    min-width: 160px;
+}
+
 .nav {
     display: flex;
     flex-direction: column;
