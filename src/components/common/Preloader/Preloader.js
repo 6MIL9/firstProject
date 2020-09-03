@@ -6,7 +6,10 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 let Preloader = (props) => {
     return (
         <div className={Class.wrapper}>
-            <FontAwesomeIcon icon={faSpinner} className="fas fa-spinner fa-spin" size="3x" color="#666" />
+            <div>
+                <FontAwesomeIcon icon={faSpinner} className="fas fa-spinner fa-spin" size="3x" color="#666" />
+            </div>
+
         </div>
     );
 }

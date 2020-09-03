@@ -13,26 +13,28 @@ const style = {
 
 const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
     return (
-        <div className={classes.loginWrapper}>
-            <h1>Login</h1>
-            <form className={classes.loginForm} onSubmit={handleSubmit}>
+        <div className={classes.wrapper}>
+            <div className={classes.loginWrapper}>
+                <h1>Login</h1>
+                <form className={classes.loginForm} onSubmit={handleSubmit}>
 
-                {createField('Email', 'email', [requiredField], Input)}
-                {createField('Password', 'password', [requiredField], Input, { type: "password" })}
-                {createField(null, 'rememberMe', [], Input, { type: "checkbox" }, style)}
+                    {createField('Email', 'email', [requiredField], Input)}
+                    {createField('Password', 'password', [requiredField], Input, { type: "password" })}
+                    {createField(null, 'rememberMe', [], Input, { type: "checkbox" }, style)}
 
-                {captchaUrl && <img src={captchaUrl} alt="captcha" />}
-                {captchaUrl && createField('Symbols from image', 'captcha', [requiredField], Input)}
+                    {captchaUrl && <img src={captchaUrl} alt="captcha" />}
+                    {captchaUrl && createField('Symbols from image', 'captcha', [requiredField], Input)}
 
-                {(error) && <div className={classes.formSummaryError}>
-                    {error}
-                </div>}
+                    {(error) && <div className={classes.formSummaryError}>
+                        {error}
+                    </div>}
 
-                <div>
-                    <button className={classes.btn}>Login</button>
-                </div>
-            </form>
-        </div >
+                    <div>
+                        <button className={classes.btn}>Login</button>
+                    </div>
+                </form>
+            </div >
+        </div>
     );
 }
 

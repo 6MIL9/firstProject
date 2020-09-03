@@ -11,18 +11,16 @@ const Menu = styled.nav`
   bottom: 0px;
   z-index: 293;
   display: block;
-  width: 220px;
   margin-top: 0px;
-  padding-top: 4rem;
-  padding-right: 0px;
+  padding: 4rem 2rem 0 1rem;
   align-items: stretch;
   background-color: #00a3ff;
-  transform: translateX(-100%);
+  transform: translateX(-120%);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   ${props =>
     props.open &&
     css`
-      transform: translateX(0);
+      transform: translateX(0%);
     `}
 `;
 
