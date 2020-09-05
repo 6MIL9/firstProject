@@ -23,4 +23,5 @@
 
 .msg {
     padding-right: 1rem;
+    word-wrap: break-word;
 }

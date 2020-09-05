@@ -1,3 +1,10 @@
 .content {
     width: 690px;
 }
+
+@media (max-width: 768px) {
+    .content {
+        width: unset;
+    }
+    
+}
