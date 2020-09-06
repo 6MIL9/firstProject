@@ -31,26 +31,24 @@ export const SideMenu = ({ children }) => {
   return <Menu open={isMenuOpen}>{children}</Menu>;
 };
 
-
-
 SideMenu.defaultProps = {
   children: (
-      <nav className={classes.nav}>
-        <div className={classes.item}>
-          <NavLink to="/profile" className={classes.link} activeClassName={classes.activeLink}>Profile</NavLink>
-        </div>
+    <nav className={classes.nav}>
+      <div className={classes.item}>
+        <NavLink to="/profile" className={classes.link} activeClassName={classes.activeLink}>Profile</NavLink>
+      </div>
 
-        <div className={classes.item}>
-          <NavLink to="/dialogs" className={classes.link} activeClassName={classes.activeLink}>Messages</NavLink>
-        </div>
+      <div className={classes.item}>
+        <NavLink to="/dialogs" className={classes.link} activeClassName={classes.activeLink}>Messages</NavLink>
+      </div>
 
-        <div className={classes.item}>
-          <NavLink to="/Users" className={classes.link} activeClassName={classes.activeLink}>Users</NavLink>
-        </div>
+      <div className={classes.item}>
+        <NavLink to="/Users" className={classes.link} activeClassName={classes.activeLink}>Users</NavLink>
+      </div>
 
-        <div className={classes.item}>
-          <NavLink to="/Settings" className={classes.link} activeClassName={classes.activeLink}>Settings</NavLink>
-        </div>
-      </nav>
+      <div className={classes.item}>
+        <NavLink to="/Settings" className={classes.link} activeClassName={classes.activeLink}>Settings</NavLink>
+      </div>
+    </nav>
   ),
 };
