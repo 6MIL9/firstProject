@@ -4,6 +4,22 @@ import { connect } from 'react-redux';
 import { getProfile, saveProfile } from '../../redux/profileReducer';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
+import { AppStateType } from '../../redux/reduxStore';
+import { ProfileType } from '../../Types/Types';
+
+// type MapStatePropsType = {
+//   profile: ProfileType
+//   userId: number | null
+// }
+
+// type MapDispatchPropsType = {
+//   saveProfile:(userId: number) => void
+//   getProfile: (userId: number) => void
+// }
+
+// type OwnPropsType = {}
+
+// type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
 
 class SettingsContainer extends React.Component {
 

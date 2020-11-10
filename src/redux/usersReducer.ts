@@ -1,5 +1,5 @@
 import { usersAPI } from '../API/Api';
-import { PhotosType, UserType } from '../Types/Types';
+import { UserType } from '../Types/Types';
 import { updateObjectInArray } from '../utils/objectHelpers'
 
 const FOLLOW = 'users/FOLLOW';
@@ -95,11 +95,10 @@ type ToggleFollowingProgressAT = {
     type: typeof TOGGLE_IS_FOLLOWING_PROGRESS,
     isFetching: boolean,
     userId: number
-
 }
 
 export const followSuccess = (userId: number): FollowSuccessAT => {
-    return {
+    return {    
         type: FOLLOW,
         userId
     }
@@ -181,7 +180,6 @@ export const follow = (userId: number) => {
 export const unfollow = (userId: number) => {
     return async (dispatch: any) => {
         followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess);
-
     }
 }
 

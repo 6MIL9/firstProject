@@ -1,11 +1,21 @@
 import React, { createContext, useState } from 'react';
 
-export const MenuContext = createContext({
+type ContextProps = { 
+  isMenuOpen: boolean
+  toggleMenu: (isMenuOpen: boolean) => void
+  toggleMenuMode: () => void
+};
+
+type PropsType = {
+  children: React.ReactNode
+}
+
+export const MenuContext = createContext<Partial<ContextProps>>({
   isMenuOpen: true,
-  toggleMenu: () => {},
+  toggleMenu: () => { },
 });
 
-const NavState = ({ children }) => {
+const NavState: React.FC<PropsType> = ({ children }) => {
   const [isMenuOpen, toggleMenu] = useState(false);
 
   function toggleMenuMode() {

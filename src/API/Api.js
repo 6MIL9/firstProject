@@ -1,5 +1,6 @@
-import * as axios from 'axios';
-
+import axios from 'axios';
+import { ProfileType } from '../Types/Types';
+//пока не знаю как
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -30,7 +31,7 @@ export const userProfileAPI = {
     updateStatus(status) {
         return instance.put(`profile/status`, { status: status })
     },
-    savePhoto(photo) {
+    savePhoto(photo) { 
         let formData = new FormData();
         formData.append('image', photo)
 
@@ -45,9 +46,9 @@ export const authAPI = {
     getAuthUserData() {
         return instance.get(`auth/me`);
     },
-    sentLoginData(email, password, rememberMe = false, captcha = null) {
+    sentLoginData(email, password, rememberMe, captcha) {
         return instance.post('/auth/login', {
-            email, password, rememberMe, captcha     
+            email, password, rememberMe, captcha
         });
     },
     logout() {

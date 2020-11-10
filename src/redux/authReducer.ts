@@ -9,7 +9,7 @@ export type InitialStateType = {
     email: string | null
     login: string | null
     isAuth: boolean
-    captchaUrl: number | null
+    captchaUrl: number | null //пока не знаю какой тип именно
 }
 
 let initialState: InitialStateType = {
