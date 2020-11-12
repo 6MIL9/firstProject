@@ -2,8 +2,12 @@ import React from 'react';
 import classes from './../Dialogs.module.css';
 import defaultPhoto from '../../../assets/img/noAvatar.jpg';
 
-const DialogItem = (props) => {
+type PropsType = {
+  name: string
+  message: string
+}
 
+const DialogItem: React.FC<PropsType> = (props) => {
   return (
     <div className={classes.dialog + ' ' + classes.active}>
       <img src={defaultPhoto} alt='фото отсутсвует' className={classes.avatar} />

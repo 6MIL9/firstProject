@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import classes from './Header.module.css';
 import { NavLink } from 'react-router-dom';
 import NavState from '../../context/navState';
 import MainMenu from './HamburgerMenu/MainMenu';
+
+// type PropsType = {
+//   children?: ReactNode
+//   login: string
+//   isAuth: boolean
+//   logout: () => (dispatch: any) => Promise<void> 
+// }
 
 let Header = (props) => {
   return (
