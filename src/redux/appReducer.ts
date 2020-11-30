@@ -1,7 +1,5 @@
 import { AuthUserData } from './authReducer';
-import { updateObjectInArray } from '../utils/objectHelpers'
 import { AppStateType } from './reduxStore';
-import { Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 const INITIALIZED_SUCCESS = 'app/INITIALIZED_SUCCESS';

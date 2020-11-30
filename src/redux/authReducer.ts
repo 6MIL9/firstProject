@@ -1,5 +1,8 @@
 import { authAPI, securityAPI } from '../API/Api';
 import { stopSubmit } from 'redux-form';
+import { AppStateType } from './reduxStore';
+import { ThunkAction } from 'redux-thunk';
+import { Dispatch } from 'redux';
 
 const SET_AUTH_USER_DATA = 'auth/SET_AUTH_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'auth/GET_CAPTCHA_URL_SUCCESS';
@@ -9,7 +12,7 @@ export type InitialStateType = {
     email: string | null
     login: string | null
     isAuth: boolean
-    captchaUrl: number | null //пока не знаю какой тип именно
+    captchaUrl: string | null 
 }
 
 let initialState: InitialStateType = {
@@ -20,7 +23,7 @@ let initialState: InitialStateType = {
     captchaUrl: null
 };
 
-const authReducer = (state = initialState, action: any): InitialStateType => {
+const authReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case SET_AUTH_USER_DATA: {
             return {
@@ -52,6 +55,8 @@ type SetAuthUserDataActionType = {
     payload: SetAuthUserDataActionPayloadType
 }
 
+type ActionsTypes = SetAuthUserDataActionType | GetCaptchaUrlSuccessType
+
 export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): SetAuthUserDataActionType => {
     return {
         type: SET_AUTH_USER_DATA,
@@ -61,7 +66,7 @@ export const setAuthUserData = (userId: number | null, email: string | null, log
 
 type GetCaptchaUrlSuccessType = {
     type: typeof GET_CAPTCHA_URL_SUCCESS,
-    payload: { captchaUrl: string }  // создание типа на месте
+    payload: { captchaUrl: string } 
 }
 
 export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccessType => {
@@ -71,8 +76,10 @@ export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccessTy
     };
 }
 
-export const AuthUserData = () => {
-    return async (dispatch: any) => {
+type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
+
+export const AuthUserData = (): ThunkType => {
+    return async (dispatch) => {
         let response = await authAPI.getAuthUserData();
 
         if (response.data.resultCode === 0) {
@@ -82,7 +89,7 @@ export const AuthUserData = () => {
     }
 }
 
-export const login = (email: string, password: string, rememberMe: boolean, captcha: string) => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string): ThunkType => { // ошибка почему-то падает
     return async (dispatch: any) => {
         let response = await authAPI.sentLoginData(email, password, rememberMe, captcha);
 
@@ -98,8 +105,8 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
     }
 }
 
-export const getCaptchaUrl = () => {
-    return async (dispatch: any) => {
+export const getCaptchaUrl = (): ThunkType => {
+    return async (dispatch) => {
         let response = await securityAPI.getCaptcha();
         const captchaUrl = response.data.url;
 
@@ -107,8 +114,8 @@ export const getCaptchaUrl = () => {
     }
 }
 
-export const logout = () => {
-    return async (dispatch: any) => {
+export const logout = (): ThunkType => {
+    return async (dispatch) => {
         let response = await authAPI.logout();
 
         if (response.data.resultCode === 0) {
