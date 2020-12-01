@@ -2,7 +2,6 @@ import { authAPI, securityAPI } from '../API/Api';
 import { stopSubmit } from 'redux-form';
 import { AppStateType } from './reduxStore';
 import { ThunkAction } from 'redux-thunk';
-import { Dispatch } from 'redux';
 
 const SET_AUTH_USER_DATA = 'auth/SET_AUTH_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'auth/GET_CAPTCHA_URL_SUCCESS';
