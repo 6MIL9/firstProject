@@ -1,4 +1,4 @@
-import { authAPI, securityAPI } from '../API/Api';
+import { authAPI, ResultCodes, ResultCodesForCaptcha, securityAPI } from '../API/Api';
 import { stopSubmit } from 'redux-form';
 import { AppStateType } from './reduxStore';
 import { ThunkAction } from 'redux-thunk';
@@ -81,8 +81,8 @@ export const AuthUserData = (): ThunkType => {
     return async (dispatch) => {
         let response = await authAPI.getAuthUserData();
 
-        if (response.data.resultCode === 0) {
-            let { id, email, login } = response.data.data;
+        if (response.resultCode === ResultCodes.Success) {
+            let { id, email, login } = response.data;
             dispatch(setAuthUserData(id, email, login, true));
         }
     }
@@ -92,13 +92,13 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
     return async (dispatch: any) => {
         let response = await authAPI.sentLoginData(email, password, rememberMe, captcha);
 
-        if (response.data.resultCode === 0) {
+        if (response.resultCode === ResultCodes.Success) {
             dispatch(AuthUserData());
         } else {
-            if (response.data.resultCode === 10) {
+            if (response.resultCode === ResultCodesForCaptcha.CaptchaIsRequired) {
                 dispatch(getCaptchaUrl());
             }
-            let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Email or password is wrong';
+            let message = response.messages.length > 0 ? response.messages[0] : 'Email or password is wrong';
             dispatch(stopSubmit("login", { _error: message }));
         }
     }
@@ -117,7 +117,7 @@ export const logout = (): ThunkType => {
     return async (dispatch) => {
         let response = await authAPI.logout();
 
-        if (response.data.resultCode === 0) {
+        if (response.data.resultCode === ResultCodes.Success) {
             dispatch(setAuthUserData(null, null, null, false));
         }
     }

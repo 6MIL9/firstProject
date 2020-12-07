@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { ProfileType } from '../Types/Types';
 
 const instance = axios.create({
@@ -31,7 +31,7 @@ export const userProfileAPI = {
     updateStatus(status: string) {
         return instance.put(`profile/status`, { status: status })
     },
-    savePhoto(photo: any) { 
+    savePhoto(photo: any) {
         let formData = new FormData();
         formData.append('image', photo)
 
@@ -42,14 +42,35 @@ export const userProfileAPI = {
     }
 };
 
+export enum ResultCodes {
+    Success = 0,
+    Error = 1
+}
+
+export enum ResultCodesForCaptcha {
+    CaptchaIsRequired = 10
+}
+
+type getAuthUserDataResponseType = {
+    data: { id: number, email: string, login: string }
+    resultCode: ResultCodes 
+    messages: Array<string>
+}
+
+type sentLoginDataResponseType = {
+    data: { userId: number }
+    resultCode: ResultCodes | ResultCodesForCaptcha
+    messages: Array<string>
+}
+
 export const authAPI = {
     getAuthUserData() {
-        return instance.get(`auth/me`);
+        return instance.get<getAuthUserDataResponseType>(`auth/me`).then(res => res.data);
     },
     sentLoginData(email: string, password: string, rememberMe: boolean, captcha: null | string = null) {
-        return instance.post('/auth/login', {
+        return instance.post<sentLoginDataResponseType>('/auth/login', {
             email, password, rememberMe, captcha
-        });
+        }).then(res => res.data);
     },
     logout() {
         return instance.delete('/auth/login');
@@ -61,5 +82,4 @@ export const securityAPI = {
         return instance.get('/security/get-captcha-url');
     }
 };
-
 
