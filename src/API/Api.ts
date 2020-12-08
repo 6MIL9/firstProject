@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { ProfileType } from '../Types/Types';
+import { ProfileType, UserType } from '../Types/Types';
 
 const instance = axios.create({
     withCredentials: true,
@@ -9,11 +9,17 @@ const instance = axios.create({
     }
 });
 
+type getUsersResponseType = {
+    items: Array<UserType>
+    totalCount: number 
+    error: null | string
+}
+
 export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 5) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-    },
-    follow(userId: number) {
+        return instance.get<getUsersResponseType>(`users?page=${currentPage}&count=${pageSize}`)
+    }, 
+    follow(userId: number) { // не ясно что делать
         return instance.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`)
     },
     unfollow(userId: number) {
@@ -21,15 +27,27 @@ export const usersAPI = {
     }
 };
 
+type updateStatusResponseType = {
+    resultCode: ResultCodes
+    messages: Array<string>
+    data: {}
+}
+
+type saveProfileResponseType = {
+    resultCode: ResultCodes
+    messages: Array<string>
+    data: {}
+}
+
 export const userProfileAPI = {
     getUserProfile(userId: number) {
-        return instance.get(`profile/${userId}`)
+        return instance.get<ProfileType>(`profile/${userId}`)
     },
     getStatus(userId: number) {
-        return instance.get(`profile/status/${userId}`)
+        return instance.get<string>(`profile/status/${userId}`)
     },
     updateStatus(status: string) {
-        return instance.put(`profile/status`, { status: status })
+        return instance.put<updateStatusResponseType>(`profile/status`, { status: status })
     },
     savePhoto(photo: any) {
         let formData = new FormData();
@@ -38,7 +56,7 @@ export const userProfileAPI = {
         return instance.put(`profile/photo`, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
     },
     saveProfile(profile: ProfileType) {
-        return instance.put(`profile`, profile)
+        return instance.put<saveProfileResponseType>(`profile`, profile)
     }
 };
 
