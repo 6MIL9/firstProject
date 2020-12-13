@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { Field, WrappedFieldMetaProps, WrappedFieldProps } from 'redux-form'
 import { FieldValidatorType } from '../../../utils/validators/validators'
 import classes from './FormsControls.module.css'
@@ -41,11 +41,21 @@ export const Input: React.FC<WrappedFieldProps> = (props) => {
     );
 }
 
-export const createField = (placeholder: string, name: string, validators: Array<FieldValidatorType>,
-    component: string | React.Component, props = {}, style?: object) => {
+export function createField<FormKeysType extends string>(placeholder: string | undefined,
+    name: FormKeysType,
+    validators: Array<FieldValidatorType>,
+    component: React.FC<WrappedFieldProps>,
+    props = {},
+    style?: object) {
     return (
         <div>
-            <Field className={classes.form} placeholder={placeholder} name={name} component={component} validate={validators} style={style} {...props} />
+            <Field className={classes.form} 
+            placeholder={placeholder} 
+            name={name} 
+            component={component} 
+            validate={validators} 
+            style={style} 
+            {...props} />
         </div>
     );
 }
