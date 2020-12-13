@@ -1,4 +1,4 @@
-import { userProfileAPI } from '../API/Api';
+import { ResultCodes, userProfileAPI } from '../API/Api';
 import { stopSubmit } from 'redux-form';
 import { PhotosType, PostType, ProfileType } from '../Types/Types';
 import { AppStateType } from './reduxStore';
@@ -151,7 +151,7 @@ export const updateStatus = (status: string): ThunkType => {
         try {
             let response = await userProfileAPI.updateStatus(status)
 
-            if (response.data.resultCode === 0) {
+            if (response.data.resultCode === ResultCodes.Success) {
                 dispatch(setStatus(status));
             }
         } catch (error) {
@@ -165,7 +165,7 @@ export const savePhoto = (photo: any): ThunkType => {
     return async (dispatch: any) => {
         let response = await userProfileAPI.savePhoto(photo)
 
-        if (response.data.resultCode === 0) {
+        if (response.data.resultCode === ResultCodes.Success) {
             dispatch(savePhotoSuccess(response.data.data.photos));
         }
     }
@@ -176,7 +176,7 @@ export const saveProfile = (profile: ProfileType): ThunkType => {
         const userId = getState().auth.userId;
         let response = await userProfileAPI.saveProfile(profile)
 
-        if (response.data.resultCode === 0) {
+        if (response.data.resultCode === ResultCodes.Success) {
             dispatch(getProfile(userId));
         } else {
             dispatch(stopSubmit('editProfile', { _error: response.data.messages[0] }));
