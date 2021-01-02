@@ -1,4 +1,6 @@
-import { authAPI, ResultCodes, ResultCodesForCaptcha, securityAPI } from '../API/Api';
+import { ResultCodes, ResultCodesForCaptcha } from '../API/Api';
+import { authAPI } from '../API/authApi'
+import { securityAPI } from './../API/securityApi';
 import { stopSubmit } from 'redux-form';
 import { AppStateType } from './reduxStore';
 import { ThunkAction } from 'redux-thunk';
@@ -11,7 +13,7 @@ export type InitialStateType = {
     email: string | null
     login: string | null
     isAuth: boolean
-    captchaUrl: string | null 
+    captchaUrl: string | null
 }
 
 let initialState: InitialStateType = {
@@ -65,7 +67,7 @@ export const setAuthUserData = (userId: number | null, email: string | null, log
 
 type GetCaptchaUrlSuccessType = {
     type: typeof GET_CAPTCHA_URL_SUCCESS,
-    payload: { captchaUrl: string } 
+    payload: { captchaUrl: string }
 }
 
 export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccessType => {

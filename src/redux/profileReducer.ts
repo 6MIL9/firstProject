@@ -1,8 +1,9 @@
-import { ResultCodes, userProfileAPI } from '../API/Api';
+import { ResultCodes } from '../API/Api';
 import { stopSubmit } from 'redux-form';
 import { PhotosType, PostType, ProfileType } from '../Types/Types';
 import { AppStateType } from './reduxStore';
 import { ThunkAction } from 'redux-thunk';
+import { userProfileAPI } from './../API/userProfileAPI';
 
 const ADD_POST = 'profile/ADD-POST';
 const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
