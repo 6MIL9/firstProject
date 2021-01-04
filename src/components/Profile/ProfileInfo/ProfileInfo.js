@@ -49,7 +49,7 @@ const ProfileData = ({ profile, isOwner, status, updateStatus }) => {
         {profile.fullName}
       </h3>
       <div>
-        <ProfileStatusWithHook status={status} updateStatus={updateStatus} isOwner={isOwner}/>
+        <ProfileStatusWithHook status={status} updateStatus={updateStatus} isOwner={isOwner} />
       </div>
     </div>
 

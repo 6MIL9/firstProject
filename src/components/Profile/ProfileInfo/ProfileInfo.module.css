@@ -104,7 +104,9 @@
 .mainInfoWrapper {
     width: 40%;
     padding-top: 1rem;
-    line-height: 1.6;
+    /* line-height: 1.6; */
+    display: flex;
+    flex-direction: column;
 }
 
 .moreInfoWrapper {
@@ -117,7 +119,8 @@
 }
 
 .editBtnWrapper {
-    padding-top: 58px;
+    /* padding-top: 58px; */
+    padding: 1rem 0;
 }
 
 .hideInfoWrapper {
