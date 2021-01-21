@@ -3,8 +3,9 @@ import classes from './../Dialogs.module.css';
 import defaultPhoto from '../../../assets/img/noAvatar.jpg';
 
 type PropsType = {
-  name: string
+  name: string | undefined
   message: string
+  id: number
 }
 
 const DialogItem: React.FC<PropsType> = (props) => {

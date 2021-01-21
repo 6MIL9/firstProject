@@ -13,26 +13,14 @@ type MapDispatchPropsType = {
   addMessage: (newMessage: string) => void
 }
 
-type OwnPropsType = {
-  
-}
-
 const mapStateToProps = (state: AppStateType):MapStatePropsType => {
   return {
     dialogsPage: state.dialogsPage,
   }
 }
 
-const mapDispatchToProps = (dispatch: any): MapDispatchPropsType => {
-  return {
-    addMessage: (newMessage: string) => {
-      dispatch(actions.addMessageCreator(newMessage));
-    }
-  }
-}
-
 const DialogsContainer = compose(
-  connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(mapStateToProps, mapDispatchToProps),
+  connect<MapStatePropsType, MapDispatchPropsType, {}, AppStateType>(mapStateToProps, {...actions}),
   withAuthRedirect
 )(Dialogs);
 
