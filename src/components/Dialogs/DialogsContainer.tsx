@@ -19,7 +19,7 @@ const mapStateToProps = (state: AppStateType):MapStatePropsType => {
   }
 }
 
-const DialogsContainer = compose(
+const DialogsContainer = compose<React.ComponentType>(
   connect<MapStatePropsType, MapDispatchPropsType, {}, AppStateType>(mapStateToProps, {...actions}),
   withAuthRedirect
 )(Dialogs);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Preloader from './components/common/Preloader/Preloader';
 import { Provider } from 'react-redux';
-import store from './redux/reduxStore';
+import store, { AppStateType } from './redux/reduxStore';
 import { withSuspense } from "./hoc/withSuspense";
 import SettingsContainer from './components/Settings/SettingsContainer';
 
@@ -18,10 +18,16 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
-class App extends React.Component {
+type MapPropsType = ReturnType<typeof mapStateToProps>
+type DispatchPropsType = {
+  initializeApp: () => void
+}
 
-  catchAllUnhandledErrors = (promiseRejectionEvent) => {
-    console.log(promiseRejectionEvent);
+
+class App extends React.Component<MapPropsType & DispatchPropsType> {
+
+  catchAllUnhandledErrors = (e: PromiseRejectionEvent) => {
+    console.log(e);
   }
 
   componentDidMount() {
@@ -63,16 +69,17 @@ class App extends React.Component {
     }
   }
 }
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
   initialized: state.app.initialized
 })
 
-let AppContainer = compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
+let AppContainer = compose<ComponentType>(withRouter, connect(mapStateToProps, { initializeApp }))(App);
 
-const MainApp = (props) => {
+const MainApp: React.FC = () => {
   return <BrowserRouter>
     <Provider store={store}>
-      <AppContainer store={store} />
+      {/* <AppContainer store={store} /> */}
+      <AppContainer />
     </Provider>
   </BrowserRouter>
 }
