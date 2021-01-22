@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
 import { logout } from '../../redux/authReducer';

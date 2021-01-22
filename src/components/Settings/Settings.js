@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Settings.module.css';
 import ProfileDataForm from '../Profile/ProfileInfo/ProfileDataForm';
 import Preloader from '../common/Preloader/Preloader';
-import { ProfileType } from '../../Types/Types';
 
 // type PropsType = {
 //     profile: ProfileType
