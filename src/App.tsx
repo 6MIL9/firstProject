@@ -23,6 +23,9 @@ type DispatchPropsType = {
   initializeApp: () => void
 }
 
+const SuspendedDialogs = withSuspense(DialogsContainer)
+const SuspendedProfile = withSuspense(ProfileContainer)
+
 
 class App extends React.Component<MapPropsType & DispatchPropsType> {
 
@@ -52,8 +55,8 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
             <Navbar />
             <div className="app-wrapper-content">
               <Switch>
-                <Route render={withSuspense(DialogsContainer)} path='/dialogs' />
-                <Route render={withSuspense(ProfileContainer)} path='/profile/:userId?' />
+                <Route render={() => <SuspendedDialogs/>} path='/dialogs' />
+                <Route render={() => <SuspendedProfile/>} path='/profile/:userId?' />
                 <Route exact render={() => (<Redirect to={"/Login"} />)} path='/' />
                 <Route exact render={() => (<Redirect to={"/Login"} />)} path='/firstProject' />
                 <Route render={() => (<UsersContainer />)} path="/Users" />
@@ -78,7 +81,6 @@ let AppContainer = compose<ComponentType>(withRouter, connect(mapStateToProps, {
 const MainApp: React.FC = () => {
   return <BrowserRouter>
     <Provider store={store}>
-      {/* <AppContainer store={store} /> */}
       <AppContainer />
     </Provider>
   </BrowserRouter>
