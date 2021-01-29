@@ -1,8 +1,14 @@
 import MyPosts from './MyPosts';
 import { actions } from '../../../redux/profileReducer';
 import { connect } from 'react-redux';
+import { AppStateType } from '../../../redux/reduxStore';
+import { PostType } from '../../../Types/Types';
 
-const mapStateToProps = (state) => {
+type MapStatePropsType = {
+  postsData: Array<PostType>
+}
+
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
   return {
     postsData: state.profilePage.postsData
   }

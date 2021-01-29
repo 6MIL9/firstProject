@@ -14,10 +14,10 @@ let initialState = {
     newPostText: ''
 };
 
-export type InitialStateType = typeof initialState
+export type InitialState = typeof initialState
 type ActionsTypes = InferActionsTypes<typeof actions>
 
-const profileReducer = (state = initialState, action: ActionsTypes) => {
+const profileReducer = (state = initialState, action: ActionsTypes): InitialState => {
     switch (action.type) {
         case 'profile/ADD-POST': {
             let newPost = {
