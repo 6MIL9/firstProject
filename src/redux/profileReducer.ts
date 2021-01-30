@@ -56,7 +56,7 @@ const profileReducer = (state = initialState, action: ActionsTypes): InitialStat
         case 'profile/SAVE_PHOTO_SUCCESS': {
             return {
                 ...state,
-                profile: { ...state.profile, photos: action.photo }
+                profile: {...state.profile, photos: action.photo} as ProfileType
             }
         }
 

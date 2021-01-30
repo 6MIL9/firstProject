@@ -41,6 +41,8 @@ export const Input: React.FC<WrappedFieldProps> = (props) => {
     );
 }
 
+export type GetStringKeys<T> = Extract<keyof T, string>
+
 export function createField<FormKeysType extends string>(placeholder: string | undefined,
     name: FormKeysType,
     validators: Array<FieldValidatorType>,

@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import classes from './ProfileInfo.module.css';
 import ProfileStatusWithHook from './ProfileStatusWithHook';
 import defaultPhoto from '../../../assets/img/noAvatar.jpg';
 import { NavLink } from 'react-router-dom';
+import { ContactsType, ProfileType } from '../../../Types/Types';
 
-const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, saveProfile }) => {
+type PropsTypeProfileInfo = {
+  profile: ProfileType
+  status: string
+  updateStatus: (status: string) => void
+  isOwner: boolean
+  savePhoto: (photo: any) => void
+}
 
-  const onPhotoSelected = (e) => {
-    if (e.target.files.length) {
+const ProfileInfo: React.FC<PropsTypeProfileInfo> = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
+
+  const onPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files?.length) {
       savePhoto(e.target.files[0])
     }
   }
@@ -32,7 +41,14 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
   );
 }
 
-const ProfileData = ({ profile, isOwner, status, updateStatus }) => {
+type ProfileDataPropsType = {
+  profile: ProfileType
+  status: string
+  updateStatus: (status: string) => void
+  isOwner: boolean
+}
+
+const ProfileData: React.FC<ProfileDataPropsType> = ({ profile, isOwner, status, updateStatus }) => {
 
   let [showInfo, setShowInfo] = useState(false);
 
@@ -75,7 +91,7 @@ const ProfileData = ({ profile, isOwner, status, updateStatus }) => {
           <div className={classes.hideInfoWrapper}>
             <div className={classes.contactsWrapper} onClick={hideInfo}>
               {Object.keys(profile.contacts).map(key => {
-                return <Contact contactTitle={key} contactValue={profile.contacts[key]} key={key} />
+                return <Contact contactTitle={key} contactValue={profile.contacts[key as keyof ContactsType]} key={key} />
               })}
             </div>
           </div>
@@ -85,7 +101,12 @@ const ProfileData = ({ profile, isOwner, status, updateStatus }) => {
   </div>
 }
 
-const Contact = ({ contactTitle, contactValue }) => {
+type ContactPropsType = {
+  contactTitle: string
+  contactValue: string
+}
+
+const Contact: React.FC<ContactPropsType> = ({ contactTitle, contactValue }) => {
   return <div className={classes.contact}>
     {contactTitle}: {!contactValue ? "not stated" : contactValue}
   </div>

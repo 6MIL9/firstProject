@@ -67,7 +67,6 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
 }
 
 const UsersContainer = compose(
-  //TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState>
   connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(mapStateToProps, { requestUsers, follow, unfollow }),
 )(UsersAPIComponent);
 
