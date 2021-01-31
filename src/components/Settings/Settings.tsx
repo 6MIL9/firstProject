@@ -2,15 +2,16 @@ import React from 'react';
 import classes from './Settings.module.css';
 import ProfileDataForm from '../Profile/ProfileInfo/ProfileDataForm';
 import Preloader from '../common/Preloader/Preloader';
+import { ProfileType } from '../../Types/Types';
 
-// type PropsType = {
-//     profile: ProfileType
-//     saveProfile: (userId: number) => void
-// }
+type PropsType = {
+    profile: ProfileType
+    saveProfile: (profile: ProfileType) => void
+}
 
-const Settings = ({ profile, saveProfile }) => {
+const Settings: React.FC<PropsType> = ({ profile, saveProfile }) => {
 
-    const onSubmit = (formData) => {
+    const onSubmit = (formData: any) => {
         saveProfile(formData)
     }
 
@@ -20,7 +21,7 @@ const Settings = ({ profile, saveProfile }) => {
 
     return (
         <div className={classes.wrapper}>
-            <ProfileDataForm profile={profile} initialValues={profile} onSubmit={onSubmit} />
+            <ProfileDataForm profile={profile} initialValues={profile} onSubmit={onSubmit}/>
         </div>
     )
 }

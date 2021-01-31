@@ -3,7 +3,7 @@ import Class from './Preloader.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
-let Preloader = () => {
+let Preloader: React.FC = () => {
     return (
         <div className={Class.wrapper}>
             <div>

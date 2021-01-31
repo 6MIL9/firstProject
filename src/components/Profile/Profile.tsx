@@ -3,14 +3,14 @@ import classes from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import Preloader from '../common/Preloader/Preloader';
-import { PhotosType, ProfileType } from '../../Types/Types';
+import { ProfileType } from '../../Types/Types';
 
 type PropsType = {
-  profile: ProfileType
+  profile: ProfileType | null
   status: string
   updateStatus: (status: string) => void
   isOwner: boolean
-  savePhoto: (photo: PhotosType) => void
+  savePhoto: (photo: File) => void
   saveProfile: (profile: ProfileType) => void
 }
 
@@ -26,7 +26,6 @@ const Profile: React.FC<PropsType> = (props) => {
         updateStatus={props.updateStatus}
         isOwner={props.isOwner}
         savePhoto={props.savePhoto}/>
-        {/* saveProfile={props.saveProfile}/> */}
       <MyPostsContainer img={props.profile.photos.small} />
     </div>
   )

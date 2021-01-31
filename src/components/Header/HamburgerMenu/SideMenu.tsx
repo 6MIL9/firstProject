@@ -4,7 +4,10 @@ import { MenuContext } from '../../../context/navState';
 import { NavLink } from 'react-router-dom';
 import classes from './SideMenu.module.css';
 
-const Menu = styled.nav`
+type TitleProps = {
+  readonly open: boolean | undefined;
+}
+const Menu = styled.nav<TitleProps>`
   position: fixed;
   top: 0px;
   left: 0px;
@@ -25,7 +28,7 @@ const Menu = styled.nav`
 `;
 
 
-export const SideMenu = ({ children }) => {
+export const SideMenu: React.FC = ({ children }) => {
   const { isMenuOpen } = useContext(MenuContext);
 
   return <Menu open={isMenuOpen}>{children}</Menu>;

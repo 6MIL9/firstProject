@@ -1,17 +1,19 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import classes from './Header.module.css';
 import { NavLink } from 'react-router-dom';
 import NavState from '../../context/navState';
 import MainMenu from './HamburgerMenu/MainMenu';
 
-// type PropsType = {
-//   children?: ReactNode
-//   login: string
-//   isAuth: boolean
-//   logout: () => (dispatch: any) => Promise<void> 
-// }
+export type MapStateType = {
+  login: string | null
+  isAuth: boolean
+}
 
-let Header = (props) => {
+export type MapDispatchType = {
+  logout: () => void
+}
+
+let Header: React.FC<MapStateType & MapDispatchType> = (props) => {
   return (
     <header className={classes.header}>
       <div className={classes.block}>

@@ -4,27 +4,27 @@ import ProfileStatus from './ProfileStatus';
 
 describe("ProfileStatus component", () => {
     test('status in props should be in the state', () => {
-        const component = create(<ProfileStatus status="test" />);
+        const component = create(<ProfileStatus status="test" updateStatus={() => 1}/>);
         const instance = component.getInstance();
-        expect(instance.state.status).toBe("test");
+        expect(instance?.state.status).toBe("test");
     });
 
     test('span with status must be displayed', () => {
-        const component = create(<ProfileStatus status="test" />);
+        const component = create(<ProfileStatus status="test" updateStatus={() => 1}/>);
         const root = component.root;
         let span = root.findByType('span');
         expect(span.length).not.toBeNull();
     });
 
     test('span must be displayed with correct status', () => {
-        const component = create(<ProfileStatus status="test" />);
+        const component = create(<ProfileStatus status="test" updateStatus={() => 1}/>);
         const root = component.root;
         let span = root.findByType('span');
         expect(span.children[0]).toBe('test');
     });
 
     test("input shouldn't be displayed", () => {
-        const component = create(<ProfileStatus status="test" />);
+        const component = create(<ProfileStatus status="test" updateStatus={() => 1}/>);
         const root = component.root;
         expect(() => {
             let input = root.findByType('input');
@@ -32,7 +32,7 @@ describe("ProfileStatus component", () => {
     });
 
     test("input shouldn be displayed in editmode instead of span", () => {
-        const component = create(<ProfileStatus status="test" />);
+        const component = create(<ProfileStatus status="test" updateStatus={() => 1}/>);
         const root = component.root;
         let span = root.findByType('span');
         span.props.onDoubleClick();

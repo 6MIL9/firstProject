@@ -50,11 +50,11 @@ const Bar = styled.span`
   background-color: #fff;
 `;
 
-const HamburgerButton = () => {
+const HamburgerButton: React.FC = () => {
   const { isMenuOpen, toggleMenuMode } = useContext(MenuContext);
 
   const clickHandler = () => {
-    toggleMenuMode();
+    if (toggleMenuMode) toggleMenuMode();
   };
 
   return (

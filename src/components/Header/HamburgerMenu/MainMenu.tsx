@@ -26,7 +26,7 @@ const MenuText = styled.h3`
   font-weight: 400;
 `;
 
-const MainMenu = () => {
+const MainMenu: React.FC = () => {
   return (
     <header>
       <Navbar>

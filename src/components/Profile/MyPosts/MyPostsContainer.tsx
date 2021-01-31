@@ -8,24 +8,18 @@ type MapStatePropsType = {
   postsData: Array<PostType>
 }
 
+type MapDispatchPropsType = {
+  addPost: (newPostText: string) => void
+}
+
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
   return {
     postsData: state.profilePage.postsData
   }
 }
 
-type MapDispatchPropsType = {
-  addPost: (newPostText: string) => void
-}
-
-const mapDispatchToProps = (dispatch: any): MapDispatchPropsType => {
-  return {
-    addPost: (newPostText) => {
-      dispatch(actions.addPostCreator(newPostText));
-    }
-  }
-}
-
-const MyPostsContainer = connect<MapStatePropsType, MapDispatchPropsType, {}, AppStateType>(mapStateToProps, mapDispatchToProps)(MyPosts);
+const MyPostsContainer = connect<MapStatePropsType, MapDispatchPropsType, {}, AppStateType>(mapStateToProps, {
+  addPost: actions.addPostCreator
+})(MyPosts);
 
 export default MyPostsContainer;  

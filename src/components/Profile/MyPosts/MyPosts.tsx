@@ -20,6 +20,8 @@ const MyPosts: React.FC<PropsType> = (props) => {
   let postsElem = props.postsData.map((post: PostType) => <Post msg={post.post} key={post.id} img={props.img}/>);
   const onSubmit = (formData: AddNewFormValuesType) => {
     props.addPost(formData.newPostText)
+    console.log(formData)
+    debugger
   }
 
   return (
@@ -48,7 +50,7 @@ type LoginFormValuesTypeKeys = GetStringKeys<AddNewFormValuesType>
 
 const AddNewForm: React.FC<InjectedFormProps<AddNewFormValuesType, AddNewFormOwnProps> & AddNewFormOwnProps> = (props) => {
   return (
-    <form onSubmit={props.onSubmit}>
+    <form onSubmit={props.handleSubmit}>
       <div>
         {createField<LoginFormValuesTypeKeys>('Enter your post', 'newPostText', [requiredField, maxLength100], TextArea)}
       </div>

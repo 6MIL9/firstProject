@@ -20,7 +20,8 @@
     "@types/react-redux": "^7.1.11",
     "@types/react-router-dom": "^5.1.6",
     "@types/redux-form": "^8.3.0",
-    "axios": "^0.19.2",
+    "@types/styled-components": "^5.1.7",
+    "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "gh-pages": "^3.0.0",
     "react": "^16.13.0",
@@ -59,5 +60,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-test-renderer": "^17.0.0"
   }
 }

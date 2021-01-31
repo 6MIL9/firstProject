@@ -2,8 +2,7 @@ import React from 'react';
 import classes from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
 
-function Navbar() {
-
+const Navbar: React.FC = () => {
     return (
         <div className={classes.main}>
             <nav className={classes.nav}>
@@ -15,17 +14,9 @@ function Navbar() {
                     <NavLink to="/dialogs" className={classes.link} activeClassName={classes.activeLink}>Messages</NavLink>
                 </div>
 
-                {/* <div className={classes.item}>
-                    <NavLink to="/News" className={classes.link} activeClassName={classes.activeLink}>News</NavLink>
-                </div> */}
-
                 <div className={classes.item}>
                     <NavLink to="/Users" className={classes.link} activeClassName={classes.activeLink}>Users</NavLink>
                 </div>
-
-                {/* <div className={classes.item}>
-                    <NavLink to="/Music" className={classes.link} activeClassName={classes.activeLink}>Music</NavLink>
-                </div> */}
 
                 <div className={classes.item}>
                     <NavLink to="/Settings" className={classes.link} activeClassName={classes.activeLink}>Settings</NavLink>
