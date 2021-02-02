@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 import { logout } from '../../redux/authReducer';
 import { AppStateType } from '../../redux/reduxStore';
 
-// type PropsType = {
-//   children?: ReactNode
-// }
-
 class HeaderContainer extends React.Component<MapStateType & MapDispatchType> {
   render() {
     return (
