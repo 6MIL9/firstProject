@@ -6,9 +6,9 @@ export const usersAPI = {
         return instance.get<getItemsType>(`users?page=${currentPage}&count=${pageSize}`)
     },
     follow<ResponseType>(userId: number) { 
-        return instance.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`)
+        return instance.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`).then(res => res.data)
     },
     unfollow(userId: number) {
-        return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`) as AxiosPromise<ResponseType>
+        return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`).then(res => res.data) 
     }
 };
