@@ -12,13 +12,17 @@ type MapDispatchPropsType = {
   addPost: (newPostText: string) => void
 }
 
+type OwnPropsType = {
+  img: string | null
+}
+
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
   return {
     postsData: state.profilePage.postsData
   }
 }
 
-const MyPostsContainer = connect<MapStatePropsType, MapDispatchPropsType, {}, AppStateType>(mapStateToProps, {
+const MyPostsContainer = connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(mapStateToProps, {
   addPost: actions.addPostCreator
 })(MyPosts);
 

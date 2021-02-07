@@ -16,7 +16,7 @@ type PropsType = {
 
 const Profile: React.FC<PropsType> = (props) => {
   if (!props.profile) {
-    return <Preloader/>
+    return <Preloader />
   }
 
   return (
@@ -25,8 +25,9 @@ const Profile: React.FC<PropsType> = (props) => {
         status={props.status}
         updateStatus={props.updateStatus}
         isOwner={props.isOwner}
-        savePhoto={props.savePhoto}/>
-      <MyPostsContainer img={props.profile.photos.small} />
+        savePhoto={props.savePhoto} />
+      {props.isOwner ? <MyPostsContainer img={props.profile.photos.small}/> : null}
+
     </div>
   )
 }

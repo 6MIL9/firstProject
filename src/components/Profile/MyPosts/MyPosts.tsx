@@ -12,23 +12,23 @@ const maxLength100 = maxLengthCreator(100);
 type PropsType = {
   postsData: Array<PostType>
   img: string | null
-  addPost: (newPostText: string) => void 
+  addPost: (newPostText: string) => void
 }
 
 const MyPosts: React.FC<PropsType> = (props) => {
 
-  let postsElem = props.postsData.map((post: PostType) => <Post msg={post.post} key={post.id} img={props.img}/>);
+  let postsElem = props.postsData.map((post: PostType) => <Post msg={post.post} key={post.id} img={props.img} />);
+
   const onSubmit = (formData: AddNewFormValuesType) => {
     props.addPost(formData.newPostText)
     console.log(formData)
-    debugger
   }
 
   return (
     <div className={classes.postsBlock}>
       <h3 className={classes.title}>My posts</h3>
       <div className={classes.postsWrapper}>
-        <AddNewFormRedux onSubmit={onSubmit}/>
+        <AddNewFormRedux onSubmit={onSubmit} />
         <div className={classes.posts}>
           {postsElem}
         </div>

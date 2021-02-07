@@ -11,10 +11,15 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
-    followingInProgress: [1, 2] as Array<number>
+    followingInProgress: [1, 2] as Array<number>,
+    filter: {
+        term: '',
+        friend: null as boolean | null
+    }
 };
 
 export type InitialState = typeof initialState
+export type FilterType = typeof initialState.filter
 type ActionsTypes = InferActionsTypes<typeof actions>
 
 export const usersReducer = (state = initialState, action: ActionsTypes): InitialState => {
@@ -40,6 +45,10 @@ export const usersReducer = (state = initialState, action: ActionsTypes): Initia
 
         case 'users/SET_CURRENT_PAGE': {
             return { ...state, currentPage: action.currentPage };
+        }
+
+        case 'users/SET_FILTER': {
+            return { ...state, filter: action.payload};
         }
 
         case 'users/SET_TOTAL_COUNT': {
@@ -92,6 +101,14 @@ export const actions = {
         } as const
     },
 
+    setFilter: (filter: FilterType) => {
+        return {
+            type: 'users/SET_FILTER',
+            payload: filter
+        } as const
+    },
+
+
     setUsersTotalCount: (totalCount: number) => {
         return {
             type: 'users/SET_TOTAL_COUNT',
@@ -116,12 +133,13 @@ export const actions = {
 
 type ThunkType = BaseThunkType<ActionsTypes>
 
-export const requestUsers = (page: number, pageSize: number): ThunkType => {
+export const requestUsers = (page: number, pageSize: number, filter: FilterType): ThunkType => {
     return async (dispatch) => {
         dispatch(actions.toggleIsFetching(true));
         dispatch(actions.setCurrentPage(page));
+        dispatch(actions.setFilter(filter));
 
-        let response = await usersAPI.getUsers(page, pageSize);
+        let response = await usersAPI.getUsers(page, pageSize, filter.term, filter.friend);
         dispatch(actions.toggleIsFetching(false));
         dispatch(actions.setUsers(response.data.items));
         dispatch(actions.setUsersTotalCount(response.data.totalCount));
