@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import MyPostsContainer from './MyPosts/MyPostsContainer';
 import Preloader from '../common/Preloader/Preloader';
 import { useSelector } from 'react-redux';
 import { AppStateType } from '../../redux/reduxStore';
+import MyPosts from './MyPosts/MyPosts';
 
 type PropsType = {
   isOwner: boolean
@@ -21,7 +21,7 @@ const Profile: React.FC<PropsType> = (props) => {
   return (
     <div className={classes.content}>
       <ProfileInfo profile={profile} isOwner={props.isOwner}/>
-      {props.isOwner ? <MyPostsContainer img={profile.photos.small}/> : null}
+      {props.isOwner ? <MyPosts img={profile.photos.small}/> : null}
     </div>
   )
 }

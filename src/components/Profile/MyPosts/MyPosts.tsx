@@ -1,26 +1,33 @@
 import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
-import { reduxForm, Field, InjectedFormProps } from 'redux-form';
+import { reduxForm, InjectedFormProps } from 'redux-form';
 import { requiredField, maxLengthCreator } from '../../../utils/validators/validators';
 import { GetStringKeys, TextArea } from '../../common/FormsControls/FormsControls';
 import { PostType } from '../../../Types/Types';
 import { createField } from './../../common/FormsControls/FormsControls';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppStateType } from '../../../redux/reduxStore';
+import { actions } from '../../../redux/profileReducer';
 
 const maxLength100 = maxLengthCreator(100);
 
 type PropsType = {
-  postsData: Array<PostType>
   img: string | null
-  addPost: (newPostText: string) => void
 }
 
 const MyPosts: React.FC<PropsType> = (props) => {
 
-  let postsElem = props.postsData.map((post: PostType) => <Post msg={post.post} key={post.id} img={props.img} />);
+  const postsData = useSelector((state: AppStateType) => state.profilePage.postsData)
+  const dispatch = useDispatch()
+  const addPost = (newPostText: string) => {
+    dispatch(actions.addPostCreator(newPostText))
+  }
+
+  let postsElem = postsData.map((post: PostType) => <Post msg={post.post} key={post.id} img={props.img} />);
 
   const onSubmit = (formData: AddNewFormValuesType) => {
-    props.addPost(formData.newPostText)
+    addPost(formData.newPostText)
     console.log(formData)
   }
 

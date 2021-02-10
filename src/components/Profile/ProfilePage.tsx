@@ -23,9 +23,7 @@ const ProfilePage: React.FC<PropsType> = (props) => {
   }, [props.match.params.userId])
 
   const authorizedUserId = useSelector((state: AppStateType) => state.auth.userId)
-
   const dispatch = useDispatch()
-
   const getProfileCB = (userId: number) => {
     dispatch(getProfile(userId))
   }
