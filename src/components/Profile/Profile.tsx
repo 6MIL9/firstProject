@@ -3,31 +3,25 @@ import classes from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import Preloader from '../common/Preloader/Preloader';
-import { ProfileType } from '../../Types/Types';
+import { useSelector } from 'react-redux';
+import { AppStateType } from '../../redux/reduxStore';
 
 type PropsType = {
-  profile: ProfileType | null
-  status: string
-  updateStatus: (status: string) => void
   isOwner: boolean
-  savePhoto: (photo: File) => void
-  saveProfile: (profile: ProfileType) => void
 }
 
 const Profile: React.FC<PropsType> = (props) => {
-  if (!props.profile) {
+
+  const profile = useSelector((state: AppStateType) => state.profilePage.profile)
+
+  if (!profile) {
     return <Preloader />
   }
 
   return (
     <div className={classes.content}>
-      <ProfileInfo profile={props.profile}
-        status={props.status}
-        updateStatus={props.updateStatus}
-        isOwner={props.isOwner}
-        savePhoto={props.savePhoto} />
-      {props.isOwner ? <MyPostsContainer img={props.profile.photos.small}/> : null}
-
+      <ProfileInfo profile={profile} isOwner={props.isOwner}/>
+      {props.isOwner ? <MyPostsContainer img={profile.photos.small}/> : null}
     </div>
   )
 }

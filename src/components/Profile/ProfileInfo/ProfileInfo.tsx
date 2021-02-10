@@ -4,20 +4,31 @@ import ProfileStatusWithHook from './ProfileStatusWithHook';
 import defaultPhoto from '../../../assets/img/noAvatar.jpg';
 import { NavLink } from 'react-router-dom';
 import { ContactsType, ProfileType } from '../../../Types/Types';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppStateType } from '../../../redux/reduxStore';
+import {updateStatus, savePhoto} from '../../../redux/profileReducer'
 
 type PropsTypeProfileInfo = {
   profile: ProfileType
-  status: string
-  updateStatus: (status: string) => void
   isOwner: boolean
-  savePhoto: (photo: any) => void
 }
 
-const ProfileInfo: React.FC<PropsTypeProfileInfo> = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
+const ProfileInfo: React.FC<PropsTypeProfileInfo> = ({ profile, isOwner }) => {
+
+  const status = useSelector((state: AppStateType) => state.profilePage.status)
+  
+  const dispatch = useDispatch()
+
+  const updateStatusCB = (status: string) => {
+    dispatch(updateStatus(status))
+  }
+  const savePhotoCB = (photo: any) => {
+    dispatch(savePhoto(photo))
+  }
 
   const onPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.length) {
-      savePhoto(e.target.files[0])
+      savePhotoCB(e.target.files[0])
     }
   }
 
@@ -35,7 +46,7 @@ const ProfileInfo: React.FC<PropsTypeProfileInfo> = ({ profile, status, updateSt
         }
       </div>
       <div className={classes.dataWrapper}>
-        <ProfileData profile={profile} isOwner={isOwner} status={status} updateStatus={updateStatus} />
+        <ProfileData profile={profile} isOwner={isOwner} status={status} updateStatus={updateStatusCB} />
       </div>
     </div>
   );
