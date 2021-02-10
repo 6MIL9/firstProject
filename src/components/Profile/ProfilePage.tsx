@@ -3,7 +3,6 @@ import Profile from './Profile';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfile, getStatus, } from '../../redux/profileReducer';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { compose } from 'redux';
 import { AppStateType } from '../../redux/reduxStore';
 
 type PathParamsType = {
@@ -57,6 +56,5 @@ const ProfilePage: React.FC<PropsType> = (props) => {
   );
 }
 
-export default compose<React.ComponentType>(withRouter,
-)(ProfilePage);
+export default withRouter(ProfilePage);
 

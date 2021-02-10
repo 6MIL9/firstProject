@@ -4,8 +4,11 @@ import DialogItem from './DialogItem/DialogsItem';
 import { reduxForm, InjectedFormProps } from 'redux-form';
 import { requiredField, maxLengthCreator } from '../../utils/validators/validators';
 import { TextArea } from '../common/FormsControls/FormsControls';
-import { InitialStateType } from '../../redux/dialogsReducer';
+import { actions } from '../../redux/dialogsReducer';
 import { createField } from './../common/FormsControls/FormsControls';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppStateType } from '../../redux/reduxStore';
+import { withAuthRedirect } from './../../hoc/withAuthRedirect';
 
 const maxLength = maxLengthCreator(150);
 
@@ -30,17 +33,17 @@ const AddDialogsForm: React.FC<InjectedFormProps<AddDialogsFormValuesType, Props
 
 const AddDialogsFormRedux = reduxForm<AddDialogsFormValuesType, PropsType>({ form: 'AddDialogsForm' })(AddDialogsForm);
 
-type OwnPropsDialogs = {
-  dialogsPage: InitialStateType
-  addMessage: (newMessage: string) => void
-}
+const Dialogs: React.FC = () => {
 
-const Dialogs: React.FC<OwnPropsDialogs> = (props) => {
-
-  let dialogsElem = props.dialogsPage.dialogsData.map((dialog) => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} message={dialog.message} />);
+  const dialogsPage = useSelector((state: AppStateType) => state.dialogsPage)
+  const dispatch = useDispatch()
+  const addMessage = (newMessage: string) => {
+    dispatch(actions.addMessage(newMessage))
+  }
+  let dialogsElem = dialogsPage.dialogsData.map((dialog) => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} message={dialog.message} />);
 
   const addNewMessage = (formData: AddDialogsFormValuesType) => {
-    props.addMessage(formData.newMessageText);
+    addMessage(formData.newMessageText);
   }
 
   return (
@@ -56,4 +59,7 @@ const Dialogs: React.FC<OwnPropsDialogs> = (props) => {
   );
 }
 
-export default Dialogs;
+const DialogsContainer = withAuthRedirect(Dialogs);
+
+export default DialogsContainer;
+

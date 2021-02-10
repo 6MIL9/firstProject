@@ -14,7 +14,7 @@ import { withSuspense } from "./hoc/withSuspense";
 import SettingsContainer from './components/Settings/SettingsContainer';
 import UsersPage from './components/Users/UsersPage';
 
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/Dialogs'));
 
 const ProfilePage = React.lazy(() => import('./components/Profile/ProfilePage'));
 
@@ -25,7 +25,6 @@ type DispatchPropsType = {
 
 const SuspendedDialogs = withSuspense(DialogsContainer)
 const SuspendedProfile = withSuspense(ProfilePage)
-
 
 class App extends React.Component<MapPropsType & DispatchPropsType> {
 
