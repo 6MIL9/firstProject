@@ -1,6 +1,5 @@
 import React, { ComponentType } from 'react';
 import './App.css';
-import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
 import { Route, BrowserRouter, withRouter, Redirect, Switch } from "react-router-dom";
 import Login from './components/Login/Login';
@@ -13,9 +12,9 @@ import store, { AppStateType } from './redux/reduxStore';
 import { withSuspense } from "./hoc/withSuspense";
 import SettingsContainer from './components/Settings/SettingsContainer';
 import UsersPage from './components/Users/UsersPage';
+import Header from './components/Header/Header';
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/Dialogs'));
-
 const ProfilePage = React.lazy(() => import('./components/Profile/ProfilePage'));
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
@@ -48,14 +47,14 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
     } else {
       return (
         <div>
-          <HeaderContainer />
+          <Header />
           <div className="clone"></div>
           <div className="app-wrapper">
             <Navbar />
             <div className="app-wrapper-content">
               <Switch>
-                <Route render={() => <SuspendedDialogs/>} path='/dialogs' />
-                <Route render={() => <SuspendedProfile/>} path='/profile/:userId?' />
+                <Route render={() => <SuspendedDialogs />} path='/dialogs' />
+                <Route render={() => <SuspendedProfile />} path='/profile/:userId?' />
                 <Route exact render={() => (<Redirect to={"/Login"} />)} path='/' />
                 <Route exact render={() => (<Redirect to={"/Login"} />)} path='/firstProject' />
                 <Route render={() => (<UsersPage />)} path="/Users" />

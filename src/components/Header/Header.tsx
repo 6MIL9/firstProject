@@ -3,17 +3,18 @@ import classes from './Header.module.css';
 import { NavLink } from 'react-router-dom';
 import NavState from '../../context/navState';
 import MainMenu from './HamburgerMenu/MainMenu';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppStateType } from '../../redux/reduxStore';
+import { logout } from './../../redux/authReducer';
 
-export type MapStateType = {
-  login: string | null
-  isAuth: boolean
-}
+const Header: React.FC = () => {
+  const login = useSelector((state: AppStateType) => state.auth.login)
+  const isAuth = useSelector((state: AppStateType) => state.auth.isAuth)
+  const dispatch = useDispatch()
+  const logoutCB = () => {
+    dispatch(logout())
+  }
 
-export type MapDispatchType = {
-  logout: () => void
-}
-
-let Header: React.FC<MapStateType & MapDispatchType> = (props) => {
   return (
     <header className={classes.header}>
       <div className={classes.block}>
@@ -22,8 +23,8 @@ let Header: React.FC<MapStateType & MapDispatchType> = (props) => {
         </NavState>
       </div>
       <div className={classes.loginContainer}>
-        {props.isAuth ? <div> <span className={classes.userName}>{props.login}</span> -
-        <button className={classes.btn} onClick={props.logout}>Logout</button></div> : <NavLink to='/login'>Login</NavLink>}
+        {isAuth ? <div> <span className={classes.userName}>{login}</span> -
+        <button className={classes.btn} onClick={logoutCB}>Logout</button></div> : <NavLink to='/login'>Login</NavLink>}
       </div>
     </header>
   );
