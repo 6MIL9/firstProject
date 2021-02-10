@@ -61,3 +61,4 @@ const ProfilePage: React.FC<PropsType> = (props) => {
 
 export default compose<React.ComponentType>(withRouter,
 )(ProfilePage);
+
