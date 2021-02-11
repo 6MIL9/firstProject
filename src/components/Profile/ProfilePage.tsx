@@ -42,7 +42,8 @@ const ProfilePage: React.FC<PropsType> = (props) => {
     }
 
     if (!userId) {
-      throw new Error('ID should exist')
+      // throw new Error('ID should exist')
+      console.log('ID should exist')
     } else {
       getProfileCB(userId);
       getStatusCB(userId);
