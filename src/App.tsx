@@ -1,7 +1,6 @@
 import React, { ComponentType } from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
-import Navbar from './components/Navbar/Navbar';
 import { Route, BrowserRouter, withRouter, Redirect, Switch, Link } from "react-router-dom";
 import Login from './components/Login/Login';
 import { initializeApp } from './redux/appReducer';
@@ -14,12 +13,13 @@ import { withSuspense } from "./hoc/withSuspense";
 import SettingsContainer from './components/Settings/SettingsContainer';
 import UsersPage from './components/Users/UsersPage';
 // import Header from './components/Header/Header';
-import { Button,  } from 'antd';
+import { Button } from 'antd';
 import { Layout, Menu, Breadcrumb } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import { UserOutlined, NotificationOutlined } from '@ant-design/icons';
+import AppHeader from './components/Header/Header';
 
 const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/Dialogs'));
@@ -54,20 +54,8 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
       return <Preloader />
     } else {
       return (
-
         <Layout>
-          {/* <nav className={classes.nav}> 
-                <div className={classes.item}>
-                    <NavLink to="/Users" className={classes.link} activeClassName={classes.activeLink}>Users</NavLink>
-                </div>
-
-                <div className={classes.item}>
-                    <NavLink to="/Settings" className={classes.link} activeClassName={classes.activeLink}>Settings</NavLink>
-                </div>
-            </nav> */}
-          <Header className="header">
-            <div className="logo" />
-          </Header>
+          <AppHeader />
           <Content style={{ padding: '0 50px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>Home</Breadcrumb.Item>
@@ -78,28 +66,11 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
               <Sider className="site-layout-background" width={200}>
                 <Menu
                   mode="inline"
-                  // defaultSelectedKeys={['1']}
-                  // defaultOpenKeys={['sub1']}
                   style={{ height: '100%' }}
                 >
-                  <SubMenu key="sub1" icon={<UserOutlined />} title="My profile">
-                    <Menu.Item key="1"><Link to="/profile">Profile</Link></Menu.Item>
-                    <Menu.Item key="2"><Link to="/dialogs">Messages</Link></Menu.Item>
-                    <Menu.Item key="3">option3</Menu.Item>
-                    <Menu.Item key="4">option4</Menu.Item>
-                  </SubMenu>
-                  <SubMenu key="sub2" icon={<LaptopOutlined />} title="Users">
-                    <Menu.Item key="5">option5</Menu.Item>
-                    <Menu.Item key="6">option6</Menu.Item>
-                    <Menu.Item key="7">option7</Menu.Item>
-                    <Menu.Item key="8">option8</Menu.Item>
-                  </SubMenu>
-                  <SubMenu key="sub3" icon={<NotificationOutlined />} title="subnav 3">
-                    <Menu.Item key="9">option9</Menu.Item>
-                    <Menu.Item key="10">option10</Menu.Item>
-                    <Menu.Item key="11">option11</Menu.Item>
-                    <Menu.Item key="12">option12</Menu.Item>
-                  </SubMenu>
+                  <Menu.Item key="1"><Link to="/profile">Profile</Link></Menu.Item>
+                  <Menu.Item key="2"><Link to="/dialogs">Messages</Link></Menu.Item>
+                  <Menu.Item key="3"><Link to="/Settings">Settings</Link></Menu.Item>
                 </Menu>
               </Sider>
               <Content style={{ padding: '0 24px', minHeight: 280 }}>
@@ -118,18 +89,8 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
               </Content>
             </Layout>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+          <Footer style={{ textAlign: 'center' }}>Social Network ©2021 Created by Emil Kliavlin</Footer>
         </Layout>
-        // <div>
-        //   <Header />
-        //   <div className="clone"></div>
-        //   <div className="app-wrapper">
-        //     <Navbar />
-        //     <div className="app-wrapper-content">
-        //     </div>
-        //   </div >
-
-        // </div >
       );
     }
   }
