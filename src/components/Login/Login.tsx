@@ -54,8 +54,6 @@ type LoginFormValuesTypeKeys = GetStringKeys<LoginFormValuesType>
 
 const LoginReduxForm = reduxForm<LoginFormValuesType, LoginFormOwnProps>({ form: 'login' })(LoginForm);
 
-
-
 const Login: React.FC = () => {
 
     const captchaUrl = useSelector((state: AppStateType) => state.auth.captchaUrl)

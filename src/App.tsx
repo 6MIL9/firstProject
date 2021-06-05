@@ -17,6 +17,7 @@ import { Button } from 'antd';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, NotificationOutlined } from '@ant-design/icons';
 import AppHeader from './components/Header/Header';
+import ChatPage from './pages/Chat/ChatPage';
 
 const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
@@ -77,11 +78,12 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                 <Switch>
                   <Route render={() => <SuspendedDialogs />} path='/dialogs' />
                   <Route render={() => <SuspendedProfile />} path='/profile/:userId?' />
-                  <Route exact render={() => (<Redirect to={"/Login"} />)} path='/' />
-                  <Route exact render={() => (<Redirect to={"/Login"} />)} path='/firstProject' />
-                  <Route render={() => (<UsersPage />)} path="/Users" />
-                  <Route render={() => (<Login />)} path="/Login" />
-                  <Route render={() => (<SettingsContainer />)} path="/Settings" />
+                  <Route exact render={() => (<Redirect to={"/login"} />)} path='/' />
+                  <Route exact render={() => (<Redirect to={"/login"} />)} path='/firstProject' />
+                  <Route render={() => (<UsersPage />)} path="/users" />
+                  <Route render={() => (<Login />)} path="/login" />
+                  <Route render={() => (<SettingsContainer />)} path="/settings" />
+                  <Route render={() => (<ChatPage />)} path="/chat" />
                   <Route render={() => (<div>404 NOT FOUND
                     <Button type={'primary'}>sadf</Button>
                   </div>)} />
