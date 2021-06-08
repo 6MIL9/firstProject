@@ -17,14 +17,13 @@ import { Button } from 'antd';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, NotificationOutlined } from '@ant-design/icons';
 import AppHeader from './components/Header/Header';
-import ChatPage from './pages/Chat/ChatPage';
 
 const { SubMenu } = Menu;
 const { Content, Footer, Sider } = Layout;
 
-
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/Dialogs'));
 const ProfilePage = React.lazy(() => import('./components/Profile/ProfilePage'));
+const ChatPage = React.lazy(() => import('./pages/Chat/ChatPage'));
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {
@@ -33,6 +32,7 @@ type DispatchPropsType = {
 
 const SuspendedDialogs = withSuspense(DialogsContainer)
 const SuspendedProfile = withSuspense(ProfilePage)
+const SuspendedChatPage = withSuspense(ChatPage)
 
 class App extends React.Component<MapPropsType & DispatchPropsType> {
 
@@ -71,7 +71,8 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                 >
                   <Menu.Item key="1"><Link to="/profile">Profile</Link></Menu.Item>
                   <Menu.Item key="2"><Link to="/dialogs">Messages</Link></Menu.Item>
-                  <Menu.Item key="3"><Link to="/Settings">Settings</Link></Menu.Item>
+                  <Menu.Item key="3"><Link to="/settings">Settings</Link></Menu.Item>
+                  <Menu.Item key="4"><Link to="/chat">Chat</Link></Menu.Item>
                 </Menu>
               </Sider>
               <Content style={{ padding: '0 24px', minHeight: 280 }}>
@@ -83,7 +84,7 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                   <Route render={() => (<UsersPage />)} path="/users" />
                   <Route render={() => (<Login />)} path="/login" />
                   <Route render={() => (<SettingsContainer />)} path="/settings" />
-                  <Route render={() => (<ChatPage />)} path="/chat" />
+                  <Route render={() => (<SuspendedChatPage />)} path="/chat" />
                   <Route render={() => (<div>404 NOT FOUND
                     <Button type={'primary'}>sadf</Button>
                   </div>)} />
