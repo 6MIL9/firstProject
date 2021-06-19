@@ -14,7 +14,7 @@ let initialState = {
         { id: 4, name: 'Sasha', message: 'dnd' },
         { id: 5, name: 'Victor', message: 'new new sas new daravas kvass' },
         { id: 6, name: 'Valera', message: 'new lorem fdasf rf fsd' }
-    ] as Array<DialogType>
+    ] as DialogType[]
 };
 
 export type InitialStateType = typeof initialState
@@ -42,7 +42,7 @@ export const actions = {
     addMessage: (newMessage: string) => ({
             type: 'dialogs/ADD-MESSAGE',
             newMessage
-    } as const) 
+    } as const)
 }
 
 export default dialogsReducer;
