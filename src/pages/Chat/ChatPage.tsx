@@ -51,6 +51,7 @@ const Message: React.FC<{ message: ChatMessageType }> = ({ message }) => {
 
 const AddMessageForm: React.FC = () => {
     const [message, setMessage] = useState('')
+    const status = useSelector((state: AppStateType) => state.chat.status)
 
     const dispatch = useDispatch()
 
@@ -63,7 +64,7 @@ const AddMessageForm: React.FC = () => {
     return <div>
         <div>
             <textarea onChange={(e) => setMessage(e.currentTarget.value)} value={message}></textarea>
-            <button onClick={sendMessageHandler} disabled={false}>Send</button>
+            <button onClick={sendMessageHandler} disabled={status !== 'ready'}>Send</button>
         </div>
     </div>
 }
