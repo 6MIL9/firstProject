@@ -1,4 +1,4 @@
-export type ChatMessageType = {
+export type ChatMessageAPIType = {
     message: string,
     photo: string,
     userId: number,
@@ -9,7 +9,7 @@ export type StatusType = 'pending' | 'ready' | 'error'
 
 type EventsType = 'messages-received' | 'status-changed'
 
-type MessagesReceivedSubsriberType = (messages: ChatMessageType[]) => void
+type MessagesReceivedSubsriberType = (messages: ChatMessageAPIType[]) => void
 type StatusChangedSubsriberType = (status: StatusType) => void
 
 let subscribers = {
